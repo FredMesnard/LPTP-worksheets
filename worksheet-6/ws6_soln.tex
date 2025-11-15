@@ -1,0 +1,145 @@
+\input /Users/fred/Desktop/lptp/tex/proofmacros.tex
+!title{ws6_soln}
+
+!lemma{list:ex1}{!0!1!ex[x]!,!1!S !Tt{list}(x)!2!2}
+!Pr{
+$!0!1!S !Tt{list}([])!2$! by~completion.
+$!0!1!ex[x]!,!1!S !Tt{list}(x)!2!2$.}
+!Epr
+
+!lemma{lista:ex2}{!0!1!ex[x]!,!1!S !Tt{lista}([x,x])!2!2}
+!Pr{
+$!0!1!S !Tt{lista}([!Tt{a}])!2$! by~completion.
+$!0!1!S !Tt{lista}([!Tt{a},!Tt{a}])!2$! by~completion.
+$!0!1!ex[x]!,!1!S !Tt{lista}([x,x])!2!2$.}
+!Epr
+
+!lemma{lista:ff}{!0!1!1!S !Tt{lista}([!Tt{b}])!2!to !bot!2}
+!Pr{
+!Ass{!0!1!S !Tt{lista}([!Tt{b}])!2}
+$!0!1!F !Tt{lista}([!Tt{b}])!2$! by~completion.
+!Eass{!0!1!1!S !Tt{lista}([!Tt{b}])!2!to !bot!2}}
+!Epr
+
+!lemma{lista:f0}{!0!1!lnot !1!S !Tt{lista}([!Tt{b}])!2!2}
+!Pr{
+!Con{!0!1!S !Tt{lista}([!Tt{b}])!2}
+$!0!1!F !Tt{lista}([!Tt{b}])!2$! by~completion.
+$!0!bot$.
+!Econ{!0!1!lnot !1!S !Tt{lista}([!Tt{b}])!2!2}}
+!Epr
+
+!lemma{lista:f1}{!0!1!F !Tt{lista}([!Tt{a},!Tt{b}])!2}
+!Pr{
+$!0!1!F !Tt{lista}([!Tt{b}])!2$.
+$!0!1!F !Tt{lista}([!Tt{a},!Tt{b}])!2$.}
+!Epr
+
+!lemma{lista:gr}{!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to gr(xs))!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to gr(xs))!2!2$}
+!Stp{none}
+!Estp{!0gr([!Tt{a}])}
+!Stp{$!0gr(xs)$ and $!0!1!S !Tt{lista}(xs)!2$}
+!Estp{!0gr([!Tt{a}|xs])}
+!Eind}
+!Epr
+
+!lemma{lista:list}{!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!S !Tt{list}(xs)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!S !Tt{list}(xs)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!S !Tt{list}([!Tt{a}])!2}
+!Stp{$!0!1!S !Tt{list}(xs)!2$ and $!0!1!S !Tt{lista}(xs)!2$}
+!Estp{!0!1!S !Tt{list}([!Tt{a}|xs])!2}
+!Eind}
+!Epr
+
+!lemma{lista:term}{!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!T !Tt{lista}(xs)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!T !Tt{lista}(xs)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!T !Tt{lista}([!Tt{a}])!2}
+!Stp{$!0!1!T !Tt{lista}(xs)!2$ and $!0!1!S !Tt{lista}(xs)!2$}
+!Estp{!0!1!T !Tt{lista}([!Tt{a}|xs])!2}
+!Eind}
+!Epr
+
+!lemma{lista:list:term}{!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!T !Tt{list}(xs)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!T !Tt{list}(xs)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!T !Tt{list}([!Tt{a}])!2}
+!Stp{$!0!1!T !Tt{list}(xs)!2$ and $!0!1!S !Tt{lista}(xs)!2$}
+!Estp{!0!1!T !Tt{list}([!Tt{a}|xs])!2}
+!Eind}
+!Epr
+
+!lemma{list:lista:term}{!0!1!all[xs]!,!1(!1!S !Tt{list}(xs)!2!to !1!T !Tt{lista}(xs)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{list}(xs)!2!to !1!T !Tt{lista}(xs)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!T !Tt{lista}([])!2}
+!Stp{$!0!1!T !Tt{lista}(xs)!2$ and $!0!1!S !Tt{list}(xs)!2$}
+!Estp{!0!1!T !Tt{lista}([x|xs])!2}
+!Eind}
+!Epr
+
+!lemma{lista:lista}{!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!S !Tt{lista}([!Tt{a}|xs])!2)!2!2}
+
+!lemma{lista:member:term}{!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!T !Tt{member}(!Tt{a},xs)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!T !Tt{member}(!Tt{a},xs)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!T !Tt{member}(!Tt{a},[!Tt{a}])!2}
+!Stp{$!0!1!T !Tt{member}(!Tt{a},xs)!2$ and $!0!1!S !Tt{lista}(xs)!2$}
+!Estp{!0!1!T !Tt{member}(!Tt{a},[!Tt{a}|xs])!2}
+!Eind}
+!Epr
+
+!lemma{lista:member:succ}{!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!S !Tt{member}(!Tt{a},xs)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!S !Tt{member}(!Tt{a},xs)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!S !Tt{member}(!Tt{a},[!Tt{a}])!2}
+!Stp{$!0!1!S !Tt{member}(!Tt{a},xs)!2$ and $!0!1!S !Tt{lista}(xs)!2$}
+!Estp{!0!1!S !Tt{member}(!Tt{a},[!Tt{a}|xs])!2}
+!Eind}
+!Epr
+
+!lemma{mema}{!0!1!all[x]!,!1(!1!S !Tt{member}(x,[!Tt{a}])!2!to x !eq !Tt{a})!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{member}(x,[!Tt{a}])!2}
+$!0!1!D !1!S !Tt{member}(x,[!Tt{a}])!2!2$! by~completion.
+!Cas{!0x !eq !Tt{a}}
+!Ecas
+!Cas{!0!1!S !Tt{member}(x,[])!2}
+$!0!1!D !1!S !Tt{member}(x,[])!2!2$! by~completion.
+$!0!bot$.
+!Ecas
+!Fin{!0x !eq !Tt{a}}
+!Eass{!0!1!1!S !Tt{member}(x,[!Tt{a}])!2!to x !eq !Tt{a}!2}}
+!Epr
+
+!lemma{lista:app}{!0!1!all[x,xs]!,!1(!1!1!S !Tt{lista}(xs)!2!land !1!S !Tt{member}(x,xs)!2!2!to x !eq !Tt{a})!2!2}
+!Pr{
+!Ind{$!0!1!all[xs]!,!1(!1!S !Tt{lista}(xs)!2!to !1!all[x]!,!1(!1!S !Tt{member}(x,xs)!2!to x !eq !Tt{a})!2!2)!2!2$}
+!Stp{none}
+!Ass{!0!1!S !Tt{member}(x,[!Tt{a}])!2}
+$!0x !eq !Tt{a}$!by{Lemma}{mema}.
+!Eass{!0!1!1!S !Tt{member}(x,[!Tt{a}])!2!to x !eq !Tt{a}!2}
+!Estp{!0!1!all[x]!,!1(!1!S !Tt{member}(x,[!Tt{a}])!2!to x !eq !Tt{a})!2!2}
+!Stp{$!0!1!all[x]!,!1(!1!S !Tt{member}(x,xs)!2!to x !eq !Tt{a})!2!2$ and $!0!1!S !Tt{lista}(xs)!2$}
+!Ass{!0!1!S !Tt{member}(x,[!Tt{a}|xs])!2}
+$!0!1!D !1!S !Tt{member}(x,[!Tt{a}|xs])!2!2$! by~completion.
+!Cas{!0x !eq !Tt{a}}
+!Ecas
+!Cas{!0!1!S !Tt{member}(x,xs)!2}
+!Ecas
+!Fin{!0x !eq !Tt{a}}
+!Eass{!0!1!1!S !Tt{member}(x,[!Tt{a}|xs])!2!to x !eq !Tt{a}!2}
+!Estp{!0!1!all[x]!,!1(!1!S !Tt{member}(x,[!Tt{a}|xs])!2!to x !eq !Tt{a})!2!2}
+!Eind}
+!Epr
+
+!end

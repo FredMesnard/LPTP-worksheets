@@ -1,0 +1,18 @@
+<HEAD>
+<TITLE>p30:example24</TITLE>
+</HEAD>
+<BODY>
+<PRE>
+<B>Lemma</B>(<I>p30:example24</I>,
+(p => q) => ~ p \/ q,
+<B>assume</B>(p => q,
+ [~ p \/ p,
+  <B>cases</B>(~ p, ~ p \/ q,
+        p,   [q, ~ p \/ q],
+       ~ p \/ q)],
+ ~ p \/ q)).
+
+[<B><A HREF = "ws1.html#43">Module</A></B> <I>ws1</I>]</PRE>
+<HR>
+<ADDRESS>LPTP, November 6, 2025</ADDRESS>
+</BODY>

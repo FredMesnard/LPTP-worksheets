@@ -1,0 +1,100 @@
+:- initialize.
+
+:- compile_gr(ws6).
+:- needs_gr(ws6).
+:- tex_file(ws6).
+
+/*
+list([]).
+list([X|Xs]) :- list(Xs).
+
+lista([a]).
+lista([a|Xs]):-lista(Xs).
+
+member(X,[X|Xs]).
+member(X,[Y|Ys]) :- member(X,Ys).
+
+From this Prolog program,
+state then prove the following properties:
+
+- there exists x s.t. list(x)
+- there exists x s.t. lista(x)
+- we don't have lista([a,b])
+- if lista(xs) then ground(xs)
+- for all xs, if lista(xs) then list(xs)
+- for all xs, if lista(xs) then list(xs) terminates
+- for all xs, if list(xs) then lista(xs) terminates
+- for all xs, if lista(xs) then lista([a|xs]) 
+- for all x xs, if lista(xs) then member(x,xs) terminates
+- for all x xs, if lista(xs) and member(x,xs) then x = a
+*/
+
+:- lemma(list:ex1,
+ex x: succeeds list(?x),
+ex x: succeeds list(?x) by gap
+).
+
+:- lemma(lista:ex2,
+ex x: succeeds lista([?x,?x]),
+ex x: succeeds lista([?x,?x]) by gap
+).
+
+:- lemma(lista:ff,
+succeeds lista([b]) => ff,
+succeeds lista([b]) => ff by gap
+).
+
+:- lemma(lista:f1,
+fails lista([a,b]),
+fails lista([a,b]) by gap
+).
+
+:- lemma(lista:gr,
+all xs:succeeds lista(?xs) => gr(?xs),
+all xs:succeeds lista(?xs) => gr(?xs) by gap
+).
+
+:- lemma(lista:list,
+all xs:succeeds lista(?xs) => succeeds list(?xs),
+all xs:succeeds lista(?xs) => succeeds list(?xs) by gap
+).
+
+:- lemma(lista:term,
+all xs:(succeeds lista(?xs) => terminates lista(?xs)),
+all xs:(succeeds lista(?xs) => terminates lista(?xs)) by gap
+).
+
+:- lemma(lista:list:term,
+all xs:(succeeds lista(?xs) => terminates list(?xs)),
+all xs:(succeeds lista(?xs) => terminates list(?xs)) by gap
+).
+
+:- lemma(list:lista:term,
+all xs:(succeeds list(?xs) => terminates lista(?xs)),
+all xs:(succeeds list(?xs) => terminates lista(?xs)) by gap
+).
+
+:- lemma(lista:lista,
+all xs:(succeeds lista(?xs) => succeeds lista([a|?xs])),
+all xs:(succeeds lista(?xs) => succeeds lista([a|?xs])) by gap
+).
+
+
+:- lemma(lista:member:term,
+all xs:succeeds lista(?xs) => terminates member(a,?xs),
+all xs:succeeds lista(?xs) => terminates member(a,?xs) by gap
+).
+
+:- lemma(lista:member:succ,
+all xs:succeeds lista(?xs) => succeeds member(a,?xs),
+all xs:succeeds lista(?xs) => succeeds member(a,?xs) by gap
+).
+
+:- lemma(lista:app,
+all [x,xs]:succeeds lista(?xs) & succeeds member(?x,?xs) => ?x=a,
+all [x,xs]:succeeds lista(?xs) & succeeds member(?x,?xs) => ?x=a by gap
+).
+
+
+:- bye.
+

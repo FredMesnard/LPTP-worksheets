@@ -1,0 +1,66 @@
+:- initialize. 
+:- needs_gr(ws3). 
+:- tex_file(ws3).
+
+/*
+p.
+
+q.
+
+r :- p.
+r :- q.
+
+s :- p, q.
+
+t.
+t :- t.
+
+u :- u.
+
+v :- p,q,s.
+
+w :- x,u.
+
+x :- fail.
+*/
+
+:- lemma(p:term, terminates p, 
+terminates p by gap).
+
+
+:- lemma(p:succes, succeeds p,
+ff by gap).
+
+:- lemma(q:succes, succeeds q, 
+ff by gap).
+
+:- lemma(p:faux_implique_tout, fails p => a=b, 
+ff by gap).
+
+:- lemma(r:succes, succeeds r, 
+ff by gap).
+
+:- lemma(r:term, terminates r, 
+ff by gap).
+
+:- lemma(s:succes, succeeds s, 
+ff by gap).
+
+:- lemma(s:term, terminates s, 
+ff by gap).
+/*  NB : T(G&H) := T(G) & (F(G) \/ T(H)) p. 47, usual manual */
+
+:- lemma(t:succes, succeeds t, 
+ff by gap).
+
+:- lemma(u:total, (terminates u) =>((succeeds u)\/(fails u)), 
+ff by gap).
+
+:- lemma(v:succes,succeeds v,
+ff by gap).
+
+:- lemma(w:term, terminates w,
+ff by gap). /*  NB : T(G&H) := T(G) & (F(G) \/ T(H)) p. 47 */
+
+:- bye.
+

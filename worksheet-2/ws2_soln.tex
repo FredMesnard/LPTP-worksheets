@@ -1,0 +1,189 @@
+\input /Users/fred/Desktop/lptp/tex/proofmacros.tex
+!title{ws2_soln}
+
+!lemma{ax0}{!0!Tt{a} !eq !Tt{a}}
+
+!lemma{ax1}{!0gr(!Tt{a})}
+
+!lemma{ax2}{!0!Tt{f}(!Tt{a}) !neq !Tt{f}(!Tt{b})}
+
+!lemma{ax3}{!0!1!Tt{p}!lor !1!lnot !Tt{p}!2!2}
+
+!lemma{ax4}{!0!1!lnot !Tt{a} !eq !Tt{b}!2}
+
+!lemma{ax5}{!0!1!Tt{p}!eqv !Tt{p}!2}
+
+!lemma{p110:elim:egal}{!0!1!1!all[x]!,!1(x !eq !Tt{a}!land !Tt{p}(x))!2!2!to !Tt{p}(!Tt{a})!2}
+
+!lemma{p111:egal:reflex}{!0!1!all[x]!,x !eq x!2}
+
+!lemma{p111:egal:sym}{!0!1!all[x_1,x_2]!,!1(x_1 !eq x_2!to x_2 !eq x_1)!2!2}
+
+!lemma{p111:egal:trans}{!0!1!all[x_1,x_2,x_3]!,!1(!1x_1 !eq x_2!land x_2 !eq x_3!2!to x_1 !eq x_3)!2!2}
+
+!lemma{p112:elim:qqsoit0}{!0!1!1!all[x]!,!Tt{p}(x)!2!to !Tt{p}(!Tt{a})!2}
+!Pr{
+!Ass{!0!1!all[x]!,!Tt{p}(x)!2}
+!Eass{!0!1!1!all[x]!,!Tt{p}(x)!2!to !Tt{p}(!Tt{a})!2}}
+!Epr
+
+!lemma{p112:elim:qqsoit1}{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!all[y]!,!Tt{p}(y)!2!2}
+!Pr{
+!Ass{!0!1!all[x]!,!Tt{p}(x)!2}
+!Eass{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!all[y]!,!Tt{p}(y)!2!2}}
+!Epr
+
+!lemma{p112:elim:qqsoit2}{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!all[y]!,!Tt{p}(!Tt{f}(y))!2!2}
+!Pr{
+!Ass{!0!1!all[x]!,!Tt{p}(x)!2}
+!Eass{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!all[y]!,!Tt{p}(!Tt{f}(y))!2!2}}
+!Epr
+
+!lemma{p113:intro:qqsoit0}{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!all[y]!,!Tt{p}(y)!2!2}
+!Pr{
+!Ass{!0!1!all[x]!,!Tt{p}(x)!2}
+$!0!Tt{p}(y)$.
+!Eass{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!all[y]!,!Tt{p}(y)!2!2}}
+!Epr
+
+!lemma{p114:0}{!0!1!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!all[x]!,!Tt{p}(x)!2!2!to !1!all[x]!,!Tt{q}(x)!2!2}
+!Pr{
+!Ass{!0!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!all[x]!,!Tt{p}(x)!2!2}
+$!0!1!Tt{p}(x_0)!to !Tt{q}(x_0)!2$.
+$!0!Tt{p}(x_0)$.
+$!0!Tt{q}(x_0)$.
+!Eass{!0!1!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!all[x]!,!Tt{p}(x)!2!2!to !1!all[x]!,!Tt{q}(x)!2!2}}
+!Epr
+
+!lemma{p114:1}{!0!1!1!Tt{p}(!Tt{a})!land !1!all[x]!,!1(!Tt{p}(x)!to !1!lnot !Tt{q}(x)!2)!2!2!2!to !1!lnot !Tt{q}(!Tt{a})!2!2}
+!Pr{
+!Ass{!0!1!Tt{p}(!Tt{a})!land !1!all[x]!,!1(!Tt{p}(x)!to !1!lnot !Tt{q}(x)!2)!2!2!2}
+$!0!1!Tt{p}(!Tt{a})!to !1!lnot !Tt{q}(!Tt{a})!2!2$.
+!Eass{!0!1!1!Tt{p}(!Tt{a})!land !1!all[x]!,!1(!Tt{p}(x)!to !1!lnot !Tt{q}(x)!2)!2!2!2!to !1!lnot !Tt{q}(!Tt{a})!2!2}}
+!Epr
+
+!lemma{p117:0}{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!ex[x]!,!Tt{p}(x)!2!2}
+!Pr{
+!Ass{!0!1!all[x]!,!Tt{p}(x)!2}
+$!0!Tt{p}(x)$.
+!Eass{!0!1!1!all[x]!,!Tt{p}(x)!2!to !1!ex[x]!,!Tt{p}(x)!2!2}}
+!Epr
+
+!lemma{p117:1}{!0!1!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!ex[x]!,!Tt{p}(x)!2!2!to !1!ex[x]!,!Tt{q}(x)!2!2}
+!Pr{
+!Ass{!0!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!ex[x]!,!Tt{p}(x)!2!2}
+!Ex[x_0]{!0!Tt{p}(x_0)}
+$!0!1!Tt{p}(x_0)!to !Tt{q}(x_0)!2$.
+$!0!Tt{q}(x_0)$.
+!Eex{!0!1!ex[x]!,!Tt{q}(x)!2}
+!Eass{!0!1!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!ex[x]!,!Tt{p}(x)!2!2!to !1!ex[x]!,!Tt{q}(x)!2!2}}
+!Epr
+
+!lemma{p118:0}{!0!1!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!ex[x]!,!Tt{p}(x)!2!2!to !1!ex[x]!,!Tt{q}(x)!2!2}
+!Pr{
+!Ass{!0!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!ex[x]!,!Tt{p}(x)!2!2}
+!Ex[x_0]{!0!Tt{p}(x_0)}
+$!0!1!Tt{p}(x_0)!to !Tt{q}(x_0)!2$.
+$!0!Tt{q}(x_0)$.
+!Eex{!0!1!ex[x]!,!Tt{q}(x)!2}
+!Eass{!0!1!1!1!all[x]!,!1(!Tt{p}(x)!to !Tt{q}(x))!2!2!land !1!ex[x]!,!Tt{p}(x)!2!2!to !1!ex[x]!,!Tt{q}(x)!2!2}}
+!Epr
+
+!lemma{p118:1}{!0!1!1!1!all[x]!,!1(!Tt{q}(x)!to !Tt{r}(x))!2!2!land !1!ex[x]!,!1(!Tt{p}(x)!land !Tt{q}(x))!2!2!2!to !1!ex[x]!,!1(!Tt{p}(x)!land !Tt{r}(x))!2!2!2}
+!Pr{
+!Ass{!0!1!1!all[x]!,!1(!Tt{q}(x)!to !Tt{r}(x))!2!2!land !1!ex[x]!,!1(!Tt{p}(x)!land !Tt{q}(x))!2!2!2}
+!Ex[x_0]{!0!1!Tt{p}(x_0)!land !Tt{q}(x_0)!2}
+$!0!1!Tt{q}(x_0)!to !Tt{r}(x_0)!2$.
+$!0!Tt{r}(x_0)$.
+$!0!1!Tt{p}(x_0)!land !Tt{r}(x_0)!2$.
+!Eex{!0!1!ex[x]!,!1(!Tt{p}(x)!land !Tt{r}(x))!2!2}
+!Eass{!0!1!1!1!all[x]!,!1(!Tt{q}(x)!to !Tt{r}(x))!2!2!land !1!ex[x]!,!1(!Tt{p}(x)!land !Tt{q}(x))!2!2!2!to !1!ex[x]!,!1(!Tt{p}(x)!land !Tt{r}(x))!2!2!2}}
+!Epr
+
+!lemma{p119:0}{!0!1!1!1!ex[x]!,!Tt{p}(x)!2!land !1!all[x,y]!,!1(!Tt{p}(x)!to !Tt{q}(y))!2!2!2!to !1!all[y]!,!Tt{q}(y)!2!2}
+!Pr{
+!Ass{!0!1!1!ex[x]!,!Tt{p}(x)!2!land !1!all[x,y]!,!1(!Tt{p}(x)!to !Tt{q}(y))!2!2!2}
+!Ex[x_0]{!0!Tt{p}(x_0)}
+$!0!1!Tt{p}(x_0)!to !Tt{q}(y_0)!2$.
+$!0!Tt{q}(y_0)$.
+!Eex{!0!Tt{q}(y_0)}
+!Eass{!0!1!1!1!ex[x]!,!Tt{p}(x)!2!land !1!all[x,y]!,!1(!Tt{p}(x)!to !Tt{q}(y))!2!2!2!to !1!all[y]!,!Tt{q}(y)!2!2}}
+!Epr
+
+!lemma{p122:1}{!0!1!1!lnot !1!all[x]!,!Tt{p}(x)!2!2!to !1!ex[x]!,!1!lnot !Tt{p}(x)!2!2!2}
+!Pr{
+!Ass{!0!1!lnot !1!all[x]!,!Tt{p}(x)!2!2}
+!Dir{!0!1!lnot !1!ex[x]!,!1!lnot !Tt{p}(x)!2!2!2}
+!Dir{!0!1!lnot !Tt{p}(x_0)!2}
+$!0!1!ex[x]!,!1!lnot !Tt{p}(x)!2!2$.
+$!0!bot$.
+!Edir{!0!Tt{p}(x_0)}
+$!0!Tt{p}(x_0)$.
+$!0!1!all[x]!,!Tt{p}(x)!2$.
+$!0!bot$.
+!Edir{!0!1!ex[x]!,!1!lnot !Tt{p}(x)!2!2}
+!Eass{!0!1!1!lnot !1!all[x]!,!Tt{p}(x)!2!2!to !1!ex[x]!,!1!lnot !Tt{p}(x)!2!2!2}}
+!Epr
+
+!lemma{p123:1}{!0!1!1!ex[x]!,!1!lnot !Tt{p}(x)!2!2!to !1!lnot !1!all[x]!,!Tt{p}(x)!2!2!2}
+!Pr{
+!Ass{!0!1!ex[x]!,!1!lnot !Tt{p}(x)!2!2}
+!Con{!0!1!all[x]!,!Tt{p}(x)!2}
+!Ex[x_0]{!0!1!lnot !Tt{p}(x_0)!2}
+$!0!Tt{p}(x_0)$.
+$!0!bot$.
+!Eex{!0!bot}
+$!0!bot$.
+!Econ{!0!1!lnot !1!all[x]!,!Tt{p}(x)!2!2}
+!Eass{!0!1!1!ex[x]!,!1!lnot !Tt{p}(x)!2!2!to !1!lnot !1!all[x]!,!Tt{p}(x)!2!2!2}}
+!Epr
+
+!lemma{p124:0}{!0!1!1!1!all[x]!,!Tt{p}(x)!2!land !Tt{q}!2!to !1!all[x]!,!1(!Tt{p}(x)!land !Tt{q})!2!2!2}
+!Pr{
+!Ass{!0!1!1!all[x]!,!Tt{p}(x)!2!land !Tt{q}!2}
+$!0!Tt{p}(x_0)$.
+$!0!1!Tt{p}(x_0)!land !Tt{q}!2$.
+!Eass{!0!1!1!1!all[x]!,!Tt{p}(x)!2!land !Tt{q}!2!to !1!all[x]!,!1(!Tt{p}(x)!land !Tt{q})!2!2!2}}
+!Epr
+
+!lemma{p124:1}{!0!1!1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2!to !1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2!2}
+!Pr{
+!Ass{!0!1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2}
+!Cas{!0!1!ex[x]!,!Tt{p}(x)!2}
+!Ex[x_0]{!0!Tt{p}(x_0)}
+$!0!1!Tt{p}(x_0)!lor !Tt{q}(x_0)!2$.
+!Eex{!0!1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2}
+!Ecas
+!Cas{!0!1!ex[x]!,!Tt{q}(x)!2}
+!Ex[x_0]{!0!Tt{q}(x_0)}
+$!0!1!Tt{p}(x_0)!lor !Tt{q}(x_0)!2$.
+!Eex{!0!1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2}
+!Ecas
+!Fin{!0!1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2}
+!Eass{!0!1!1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2!to !1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2!2}}
+!Epr
+
+!lemma{p125:0}{!0!1!1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2!to !1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2!2}
+!Pr{
+!Ass{!0!1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2}
+!Ex[x_0]{!0!1!Tt{p}(x_0)!lor !Tt{q}(x_0)!2}
+!Cas{!0!Tt{p}(x_0)}
+$!0!1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2$.
+!Ecas
+!Cas{!0!Tt{q}(x_0)}
+$!0!1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2$.
+!Ecas
+!Fin{!0!1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2}
+!Eex{!0!1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2}
+!Eass{!0!1!1!ex[x]!,!1(!Tt{p}(x)!lor !Tt{q}(x))!2!2!to !1!1!ex[x]!,!Tt{p}(x)!2!lor !1!ex[x]!,!Tt{q}(x)!2!2!2}}
+!Epr
+
+!lemma{p125:1}{!0!1!1!ex[x,y]!,!Tt{p}(x,y)!2!to !1!ex[y,x]!,!Tt{p}(x,y)!2!2}
+!Pr{
+!Ass{!0!1!ex[x,y]!,!Tt{p}(x,y)!2}
+!Ex[x_0,y_0]{!0!Tt{p}(x_0,y_0)}
+!Eex{!0!1!ex[y,x]!,!Tt{p}(x,y)!2}
+!Eass{!0!1!1!ex[x,y]!,!Tt{p}(x,y)!2!to !1!ex[y,x]!,!Tt{p}(x,y)!2!2}}
+!Epr
+
+!end

@@ -1,0 +1,171 @@
+:- initialize.
+:- tex_file(ws2_soln).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% =i, HR-p110, axiome LPTP-p71
+:- lemma(ax0, a = a, []). 
+:- lemma(ax1, gr(a), []). 
+:- lemma(ax2, f(a) <> f(b),[]).
+:- lemma(ax3, p \/ ~p,[]).
+:- lemma(ax4, ~(a=b),[]).
+:- lemma(ax5, p <=> p,[]).
+
+:-lemma(p110:elim:egal,
+(all [x]:(?x=a & p(?x))) => p(a),
+[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p111:egal:reflex,
+all [x]: ?x = ?x,
+[]).
+
+:- lemma(p111:egal:sym,
+all [x1,x2]: (?x1 = ?x2 => ?x2 = ?x1),
+[]).
+
+:- lemma(p111:egal:trans,
+all [x1,x2,x3]:(?x1 = ?x2 & ?x2 = ?x3 => ?x1 = ?x3),
+[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p112:elim:qqsoit0,
+(all x: p(?x)) => p(a),
+assume(all x: p(?x),[],p(a))).
+
+:- lemma(p112:elim:qqsoit1,
+(all x: p(?x)) => (all [y]: p(?y)),
+assume(all x: p(?x),[],(all [y]:p(?y)))).
+
+:- lemma(p112:elim:qqsoit2,
+(all x: p(?x)) => (all [y]: p(f(?y))),
+assume(all x: p(?x),[],(all [y]: p(f(?y))))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p113:intro:qqsoit0,
+(all x: p(?x)) => (all y: p(?y)),
+assume(all x: p(?x),[p(?y)],all y: p(?y))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p114:0,
+(all x: (p(?x) => q(?x))) & (all x: p(?x)) => (all x: q(?x)),
+assume((all x: (p(?x) => q(?x))) & (all x: p(?x)),
+ [p(?x0) => q(?x0),
+  p(?x0),
+  q(?x0)],
+ all x: q(?x))).
+
+:- lemma(p114:1,
+p(a) & (all x: (p(?x) => ~ q(?x))) => ~ q(a),
+assume(p(a) & (all x: (p(?x) => ~ q(?x))),
+ [p(a) => ~ q(a)],
+ ~ q(a))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p117:0,
+(all x: p(?x))=> (ex x: p(?x)),
+assume(all x: p(?x),
+ [p(?x)],
+ ex x: p(?x))).
+
+:- lemma(p117:1,
+(all x: (p(?x) => q(?x))) & (ex x: p(?x)) => (ex x: q(?x)),
+assume((all x: (p(?x) => q(?x))) & (ex x: p(?x)),
+ exist(x0,p(?x0),
+  [p(?x0)=>q(?x0),q(?x0)],ex x: q(?x)),
+ ex x: q(?x))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p118:0,
+(all x: (p(?x) => q(?x))) & (ex x: p(?x)) => (ex x: q(?x)),
+assume((all x: (p(?x) => q(?x))) & (ex x: p(?x)),
+ exist(x0,p(?x0),
+  [p(?x0)=>q(?x0),q(?x0)],(ex x: q(?x))),
+ ex x: q(?x))).
+
+:- lemma(p118:1,
+(all x: q(?x) => r(?x)) & (ex x: p(?x) & q(?x)) => (ex x: p(?x) & r(?x)),
+assume((all x: q(?x) => r(?x)) & (ex x: p(?x) & q(?x)),
+ exist(x0,p(?x0)&q(?x0),
+  [q(?x0) => r(?x0),
+   r(?x0),
+   p(?x0) & r(?x0)],
+  ex x: p(?x) & r(?x)),
+ ex x: p(?x) & r(?x))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p119:0,
+(ex x: p(?x))&(all [x,y]: p(?x) => q(?y)) => (all y: q(?y)),
+assume((ex x: p(?x))&(all [x,y]: p(?x) => q(?y)),
+ exist(x0,p(?x0),
+  [p(?x0)=>q(?y0),
+   q(?y0)],
+  q(?y0)),
+all y: q(?y))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p122:1,
+~ (all x: p(?x)) => (ex x: ~ p(?x)),
+assume(~ (all x: p(?x)),
+ indirect(~(ex x: ~p(?x)),
+  [indirect(~p(?x0),[ex x: ~p(?x),ff]),
+   p(?x0),
+   all x: p(?x),
+   ff]),
+ ex x: ~p(?x))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p123:1,
+(ex x: ~p(?x)) => ~(all x: p(?x)),
+assume(ex x: ~p(?x),
+ contra(all x: p(?x),
+  [exist(x0,~p(?x0),[p(?x0),ff],ff),
+   ff]),
+ ~(all x: p(?x)))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p124:0,
+(all x: p(?x)) & q => (all x: p(?x) & q),
+assume( (all x: p(?x)) & q,
+ [p(?x0),p(?x0)&q],
+all x: p(?x) & q)).
+
+:- lemma(p124:1,
+(ex x: p(?x)) \/ (ex x: q(?x)) => (ex x: p(?x) \/ q(?x)),
+assume((ex x: p(?x)) \/ (ex x: q(?x)),
+ cases(
+  ex x: p(?x),
+   exist(x0,p(?x0),
+    p(?x0) \/ q(?x0),
+    ex x: p(?x) \/ q(?x)),
+  ex x: q(?x),
+   exist(x0,q(?x0),
+    p(?x0) \/ q(?x0),
+    ex x: p(?x) \/ q(?x)),
+  ex x: p(?x) \/ q(?x)),
+ ex x: p(?x) \/ q(?x))).
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p125:0,
+(ex x: p(?x) \/ q(?x)) => (ex x: p(?x)) \/ (ex x: q(?x)),
+assume((ex x: p(?x) \/ q(?x)),
+ exist(x0,p(?x0) \/ q(?x0),
+  cases(
+   p(?x0),(ex x: p(?x)) \/ (ex x: q(?x)),
+   q(?x0),(ex x: p(?x)) \/ (ex x: q(?x)),
+   (ex x: p(?x)) \/ (ex x: q(?x))),
+  (ex x: p(?x)) \/ (ex x: q(?x))),
+  (ex x: p(?x)) \/ (ex x: q(?x)))).
+
+:- lemma(p125:1,
+(ex [x,y]: p(?x,?y)) => (ex [y,x]: p(?x,?y)),
+assume(ex [x,y]: p(?x,?y),
+ exist([x0,y0],p(?x0,?y0),
+   [],
+   ex [y,x]: p(?x,?y)),
+ ex [y,x]: p(?x,?y))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% p126-127, exo 2.5.1, 2.5.2, 2.5.3, 2.5.4, 
+% 2.5.5, 2.5.6, 2.5.7, 2.5.8, 2.5.9, 2.5.10
+
+:- bye.

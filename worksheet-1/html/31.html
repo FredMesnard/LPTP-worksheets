@@ -1,0 +1,19 @@
+<HEAD>
+<TITLE>p21:example17</TITLE>
+</HEAD>
+<BODY>
+<PRE>
+<B>Lemma</B>(<I>p21:example17</I>,
+((p \/ q)) \/ r => p \/ (q \/ r),
+<B>assume</B>((p \/ q) \/ r,
+ <B>cases</B>(
+  [<B>case</B>(p,p \/(q \/r)),
+   <B>case</B>(q,[q\/r,p\/(q\/r)]),
+   <B>case</B>(r,[q\/r,p\/(q\/r)])],
+  p \/ (q \/r)),
+p \/ (q \/ r))).
+
+[<B><A HREF = "ws1.html#31">Module</A></B> <I>ws1</I>]</PRE>
+<HR>
+<ADDRESS>LPTP, November 6, 2025</ADDRESS>
+</BODY>

@@ -1,0 +1,72 @@
+
+:- assert_clauses(n(a,1),[
+ clause([n(a,1),[n(zero,0)]],
+  [&],
+  []/0),
+ clause([n(a,1),[n(s,1),$(x)]],
+  [n(a,1),[n(s,1),$(x)]],
+  [x]/0)
+]).
+
+:- assert_clauses(n(p,0),[
+ clause([n(p,0)],
+  [&],
+  []/0)
+]).
+
+:- assert_clauses(n(q,0),[
+ clause([n(q,0)],
+  [&],
+  []/0)
+]).
+
+:- assert_clauses(n(r,0),[
+ clause([n(r,0)],
+  [n(p,0)],
+  []/0),
+ clause([n(r,0)],
+  [n(q,0)],
+  []/0)
+]).
+
+:- assert_clauses(n(s,0),[
+ clause([n(s,0)],
+  [&,[n(p,0)],[n(q,0)]],
+  []/0)
+]).
+
+:- assert_clauses(n(t,0),[
+ clause([n(t,0)],
+  [&],
+  []/0),
+ clause([n(t,0)],
+  [n(t,0)],
+  []/0)
+]).
+
+:- assert_clauses(n(u,0),[
+ clause([n(u,0)],
+  [n(u,0)],
+  []/0),
+ clause([n(u,0)],
+  [&],
+  []/0)
+]).
+
+:- assert_clauses(n(v,0),[
+ clause([n(v,0)],
+  [&,[n(p,0)],[n(q,0)],[n(s,0)]],
+  []/0)
+]).
+
+:- assert_clauses(n(w,0),[
+ clause([n(w,0)],
+  [&,[n(x,0)],[n(u,0)]],
+  []/0)
+]).
+
+:- assert_clauses(n(x,0),[
+ clause([n(x,0)],
+  [\/],
+  []/0)
+]).

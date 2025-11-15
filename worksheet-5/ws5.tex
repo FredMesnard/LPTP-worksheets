@@ -1,0 +1,54 @@
+\input /Users/fred/Desktop/lptp/tex/proofmacros.tex
+!title{ws5}
+
+!lemma{nat:ground}{!0!1!all[x]!,!1(!1!S !Tt{nat}(x)!2!to gr(x))!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:ground:1}{!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to gr(x))!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:ground:2}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land gr(y)!2!to gr(z))!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:ground:3}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land gr(z)!2!to gr(y))!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:types:2}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land !1!S !Tt{nat}(y)!2!2!to !1!S !Tt{nat}(z)!2)!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:types:3}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land !1!S !Tt{nat}(z)!2!2!to !1!S !Tt{nat}(y)!2)!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{nat:termination}{!0!1!all[x]!,!1(!1!S !Tt{nat}(x)!2!to !1!T !Tt{nat}(x)!2)!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:termination:1}{!0!1!all[x,y,z]!,!1(!1!S !Tt{nat}(x)!2!to !1!T !Tt{add}(x,y,z)!2)!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:termination:2}{!0!1!all[x,y,z]!,!1(!1!S !Tt{nat}(z)!2!to !1!T !Tt{add}(x,y,z)!2)!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!lemma{add:termination:3}{!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to !1!T !Tt{add}(x,y,z)!2)!2!2}
+!Pr{
+$!0!bot$! by~{!bf GAP}.}
+!Epr
+
+!end

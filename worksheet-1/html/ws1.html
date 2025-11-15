@@ -1,0 +1,150 @@
+<HEAD>
+<TITLE>ws1</TITLE>
+</HEAD>
+<BODY>
+[<A HREF = "index.html">Index</A>]
+<H2>Module: ws1</H2>
+<PRE>
+
+<B><A HREF ="1.html">Lemma</A></B>(<I><A NAME = "1">p7:example4</A></I>)
+(p & q) & r => q & r.
+
+<B><A HREF ="2.html">Lemma</A></B>(<I><A NAME = "2">p8:exercise2:1</A></I>)
+((p & q) & r) & (s & t) => q & s.
+
+<B><A HREF ="3.html">Lemma</A></B>(<I><A NAME = "3">p8:exercise2:2</A></I>)
+p & q => q & p.
+
+<B><A HREF ="4.html">Lemma</A></B>(<I><A NAME = "4">p8:exercise2:3</A></I>)
+(p & q) & r => p & (q & r).
+
+<B><A HREF ="5.html">Lemma</A></B>(<I><A NAME = "5">p9:0</A></I>)
+p => ~(~ p).
+
+<B><A HREF ="6.html">Lemma</A></B>(<I><A NAME = "6">p9:1</A></I>)
+~ (~ p) => p.
+
+<B><A HREF ="7.html">Lemma</A></B>(<I><A NAME = "7">p9:example5:a</A></I>)
+~ (~ (q&r)) => q&r.
+
+<B><A HREF ="8.html">Lemma</A></B>(<I><A NAME = "8">p9:example5:b</A></I>)
+p & ~(~(q&r)) => ~(~(p))&r.
+
+<B><A HREF ="9.html">Lemma</A></B>(<I><A NAME = "9">p10:0</A></I>)
+p&(p => q) => q.
+
+<B><A HREF ="10.html">Lemma</A></B>(<I><A NAME = "10">p10:1</A></I>)
+(~p\/q)&( ~p \/q => r \/ ~p) => r \/ ~p.
+
+<B><A HREF ="11.html">Lemma</A></B>(<I><A NAME = "11">p11:0</A></I>)
+p&(p=>q)&(p=>(q=>r))=>r.
+
+<B><A HREF ="12.html">Lemma</A></B>(<I><A NAME = "12">p11:example7:a</A></I>)
+((q => r) & ~ r) => ~ q.
+
+<B><A HREF ="13.html">Lemma</A></B>(<I><A NAME = "13">p11:example7:b</A></I>)
+(p => (q => r)) & p & ~r => ~q.
+
+<B><A HREF ="14.html">Lemma</A></B>(<I><A NAME = "14">p11:example7:c</A></I>)
+(p => (q => r)) & p & ~r => ~q.
+
+<B><A HREF ="15.html">Lemma</A></B>(<I><A NAME = "15">p11:example7:d</A></I>)
+(p => (q => r)) & p & ~r => ~q.
+
+<B><A HREF ="16.html">Lemma</A></B>(<I><A NAME = "16">p12:example8:a</A></I>)
+(~p => q)& ~q => p.
+
+<B><A HREF ="17.html">Lemma</A></B>(<I><A NAME = "17">p12:example8:b</A></I>)
+(p => ~q) & q => ~ p.
+
+<B><A HREF ="18.html">Lemma</A></B>(<I><A NAME = "18">p12:exercise3:2:a</A></I>)
+(p => (p => q)) & p => q.
+
+<B><A HREF ="19.html">Lemma</A></B>(<I><A NAME = "19">p12:exercise3:2:b</A></I>)
+(q => (p => r)) & ~r & q => ~p.
+
+<B><A HREF ="20.html">Lemma</A></B>(<I><A NAME = "20">p13:0</A></I>)
+(p => q) => (~q => ~p).
+
+<B><A HREF ="21.html">Lemma</A></B>(<I><A NAME = "21">p14:0</A></I>)
+((~q => ~p) => (p => ~ ~q)).
+
+<B><A HREF ="22.html">Lemma</A></B>(<I><A NAME = "22">p15:0</A></I>)
+p => p.
+
+<B><A HREF ="23.html">Lemma</A></B>(<I><A NAME = "23">p15:example11</A></I>)
+(q => r) => ((~q => ~p) => (p => r)).
+
+<B><A HREF ="24.html">Lemma</A></B>(<I><A NAME = "24">p17:example13</A></I>)
+((p & q) => r) => (p => (q => r)).
+
+<B><A HREF ="25.html">Lemma</A></B>(<I><A NAME = "25">p18:example14</A></I>)
+(p => (q => r)) => (p&q => r).
+
+<B><A HREF ="26.html">Lemma</A></B>(<I><A NAME = "26">p18:example15</A></I>)
+(p => q) => (p&r => q&r).
+
+<B><A HREF ="27.html">Lemma</A></B>(<I><A NAME = "27">p19:0</A></I>)
+p \/ q => q \/ p.
+
+<B><A HREF ="28.html">Lemma</A></B>(<I><A NAME = "28">p19:0:bis</A></I>)
+p \/ q => q \/ p.
+
+<B><A HREF ="29.html">Lemma</A></B>(<I><A NAME = "29">p20:example16</A></I>)
+(q => r) => (p \/ q => p \/ r).
+
+<B><A HREF ="30.html">Lemma</A></B>(<I><A NAME = "30">p21:example17:0</A></I>)
+(p \/ q) \/ r => p \/ (q \/ r).
+
+<B><A HREF ="31.html">Lemma</A></B>(<I><A NAME = "31">p21:example17</A></I>)
+((p \/ q)) \/ r => p \/ (q \/ r).
+
+<B><A HREF ="32.html">Lemma</A></B>(<I><A NAME = "32">p21:example18</A></I>)
+p & (q \/ r) => (p&q)\/(p&r).
+
+<B><A HREF ="33.html">Lemma</A></B>(<I><A NAME = "33">p22:exercise4:1:a</A></I>)
+p&q => p.
+
+<B><A HREF ="34.html">Lemma</A></B>(<I><A NAME = "34">p22:exercise4:1:b</A></I>)
+p => (q => p&q).
+
+<B><A HREF ="35.html">Lemma</A></B>(<I><A NAME = "35">p22:exercise4:1:c</A></I>)
+p => ((p => q) => q).
+
+<B><A HREF ="36.html">Lemma</A></B>(<I><A NAME = "36">p23:0</A></I>)
+p & ~ p => q.
+
+<B><A HREF ="37.html">Lemma</A></B>(<I><A NAME = "37">p25:example20</A></I>)
+~p \/ q => (p => q).
+
+<B><A HREF ="38.html">Lemma</A></B>(<I><A NAME = "38">p25:example21</A></I>)
+(p => q) & (p => ~q) => ~p.
+
+<B><A HREF ="39.html">Lemma</A></B>(<I><A NAME = "39">p26:example21</A></I>)
+(p => ~p) => ~p.
+
+<B><A HREF ="40.html">Lemma</A></B>(<I><A NAME = "40">p26:example22</A></I>)
+(p => (q => r)) & p & ~ r => ~ q.
+
+<B><A HREF ="41.html">Lemma</A></B>(<I><A NAME = "41">p26:example23</A></I>)
+(p & ~ q => r) & ~ r & p => q.
+
+<B><A HREF ="42.html">Lemma</A></B>(<I><A NAME = "42">p26:example23:bis</A></I>)
+(p & ~ q => r) & ~ r & p => q.
+
+<B><A HREF ="43.html">Lemma</A></B>(<I><A NAME = "43">p30:example24</A></I>)
+(p => q) => ~ p \/ q.
+
+<B><A HREF ="44.html">Lemma</A></B>(<I><A NAME = "44">p34:exequiv1:gd</A></I>)
+~(p & q) => ~ p \/ ~ q.
+
+<B><A HREF ="45.html">Lemma</A></B>(<I><A NAME = "45">p34:exequiv1:dg</A></I>)
+~p \/ ~q => ~(p&q).
+
+<B><A HREF ="46.html">Lemma</A></B>(<I><A NAME = "46">p34:exequiv1</A></I>)
+~(p & q) <=> ~ p \/ ~ q.
+</PRE>
+[<A HREF = "index.html">Index</A>]
+<HR>
+<ADDRESS>LPTP, November 6, 2025</ADDRESS>
+</BODY>

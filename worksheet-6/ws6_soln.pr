@@ -1,0 +1,161 @@
+:- initialize.
+
+:- compile_gr(ws6).
+:- needs_gr(ws6).
+
+:- tex_file(ws6_soln).
+
+:- lemma(list:ex1,
+ex x: succeeds list(?x),
+[succeeds list([]) by completion,
+ ex x: succeeds list(?x)]
+).
+
+:- lemma(lista:ex2,
+ex x: succeeds lista([?x,?x]),
+[succeeds lista([a]) by completion,
+ succeeds lista([a,a]) by completion,
+ ex x: succeeds lista([?x,?x])]
+).
+
+:- lemma(lista:ff,
+succeeds lista([b]) => ff,
+assume(succeeds lista([b]), [fails lista([b]) by completion], ff)
+).
+
+:- lemma(lista:f0,
+~ succeeds lista([b]),
+contra(succeeds lista([b]),
+ [fails lista([b]) by completion,ff])
+).
+
+:- lemma(lista:f1,
+fails lista([a,b]),
+[fails lista([b]), fails lista([a,b])]
+).
+
+:- lemma(lista:gr,
+all xs:succeeds lista(?xs) => gr(?xs),
+induction([all xs: succeeds lista(?xs) => gr(?xs)],
+ [step([],[],[],gr([a])),
+  step([xs],
+   [gr(?xs),
+    succeeds lista(?xs)],
+   [],
+   gr([a|?xs]))])
+).
+
+:- lemma(lista:list,
+all xs:succeeds lista(?xs) => succeeds list(?xs),
+induction([all xs: succeeds lista(?xs) => succeeds list(?xs)],
+ [step([],[],[],succeeds list([a])),
+  step([xs],
+   [succeeds list(?xs),
+    succeeds lista(?xs)],
+   [],
+   succeeds list([a|?xs]))]) 
+).
+
+:- lemma(lista:term,
+all xs:(succeeds lista(?xs) => terminates lista(?xs)),
+induction([all xs: succeeds lista(?xs) => terminates lista(?xs)],
+ [step([],[],[],terminates lista([a])),
+  step([xs],
+   [terminates lista(?xs),
+    succeeds lista(?xs)],
+   [],
+   terminates lista([a|?xs]))])
+).
+
+:- lemma(lista:list:term,
+all xs:(succeeds lista(?xs) => terminates list(?xs)),
+induction([all xs: succeeds lista(?xs) => terminates list(?xs)],
+ [step([],[],[],terminates list([a])),
+  step([xs],
+   [terminates list(?xs),
+    succeeds lista(?xs)],
+   [],
+   terminates list([a|?xs]))])
+).
+
+:- lemma(list:lista:term,
+all xs:(succeeds list(?xs) => terminates lista(?xs)),
+induction([all xs: succeeds list(?xs) => terminates lista(?xs)],
+ [step([],[],[],terminates lista([])),
+  step([x,xs],
+   [terminates lista(?xs),
+    succeeds list(?xs)],
+   [],
+   terminates lista([?x|?xs]))])
+).
+
+:- lemma(lista:lista,
+all xs:(succeeds lista(?xs) => succeeds lista([a|?xs])),
+[]
+).
+
+
+:- lemma(lista:member:term,
+all xs:succeeds lista(?xs) => terminates member(a,?xs),
+induction([all xs: succeeds lista(?xs) => terminates member(a,?xs)],
+ [step([],[],[],terminates member(a,[a])),
+  step([xs],
+   [terminates member(a,?xs),
+    succeeds lista(?xs)],
+   [],
+   terminates member(a,[a|?xs]))])
+).
+
+:- lemma(lista:member:succ,
+all xs:succeeds lista(?xs) => succeeds member(a,?xs),
+induction([all xs: succeeds lista(?xs) => succeeds member(a,?xs)],
+ [step([],[],[],succeeds member(a,[a])),
+  step([xs],
+   [succeeds member(a,?xs),
+    succeeds lista(?xs)],
+   [],
+   succeeds member(a,[a|?xs]))])
+).
+
+
+:- lemma(mema,
+all x:(succeeds member(?x,[a]) => ?x=a),
+assume(succeeds member(?x,[a]),
+ [def succeeds member(?x,[a]) by completion,
+ cases(?x = a,
+  [],
+  succeeds member(?x,[]),
+  [def succeeds member(?x,[]) by completion,
+   ff],
+  ?x = a)],
+ ?x = a)
+).
+
+:- lemma(lista:app,
+all [x,xs]:succeeds lista(?xs) & succeeds member(?x,?xs) => ?x=a,
+induction(
+ [all xs: succeeds lista(?xs) => 
+    (all x: succeeds member(?x,?xs) => ?x = a)],
+ [step([],
+   [],
+   assume(succeeds member(?x,[a]),
+    ?x = a by lemma(mema),
+    ?x = a),
+   all x: succeeds member(?x,[a]) => ?x = a),
+  step([xs],
+   [all x: succeeds member(?x,?xs) => ?x = a,
+    succeeds lista(?xs)],
+   assume(succeeds member(?x,[a|?xs]),
+    [def succeeds member(?x,[a|?xs]) by completion,
+    cases(?x = a,
+     [],
+     succeeds member(?x,?xs),
+     [],
+     ?x = a)],
+    ?x = a),
+   all x: succeeds member(?x,[a|?xs]) => ?x = a)])
+  ).
+
+
+:- bye.
+

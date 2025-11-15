@@ -1,0 +1,285 @@
+:- initialize.
+
+:- tex_file(ws1).
+
+
+:- lemma(piq_or_qip, (p => q) \/ (q => p),
+[ P \/ ~ p, % LEM on p
+ (p => q) \/ (q => p) by gap
+]).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p7:example4,
+(p & q) & r => q & r,
+assume((p&q)&r,
+ [],
+ q&r)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p8:exercise2:1,
+((p & q) & r) & (s & t) => q & s,[]).
+
+
+:- lemma(p8:exercise2:2,
+p & q => q & p,
+tt).
+
+:- lemma(p8:exercise2:3,
+(p & q) & r => p & (q & r),tt).
+%(p & q) & r => p & (q & r) by gap).
+
+:- lemma(marianne,tt,[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p9:0,
+p => ~(~ p),
+assume(p,
+ contra( ~ p,
+  ff),
+ ~(~p))).
+
+
+:- lemma(p9:1,
+~ (~ p) => p,
+assume( (~ ~ p),
+  indirect( ~ p,ff),
+  p)).
+
+:- lemma(p9:example5:a,
+~ (~ (q&r)) => q&r,
+~ (~ (q&r)) => q&r by gap).
+
+:- lemma(p9:example5:b,
+p & ~(~(q&r)) => ~(~(p))&r,
+assume(p & ~(~(q&r)),
+ [~(~(p)) by lemma(p9:0),
+  q&r by lemma(p9:example5:a),
+  r],
+ ~(~(p))&r)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p10:0,
+p&(p => q) => q,
+p&(p => q) => q by gap).
+
+
+:- lemma(p10:1,
+(~p\/q)&( ~p \/q => r \/ ~p) => r \/ ~p,
+(~p\/q)&( ~p \/q => r \/ ~p) => r \/ ~p by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p11:0,
+p&(p=>q)&(p=>(q=>r))=>r,
+p&(p=>q)&(p=>(q=>r))=>r by gap).
+
+
+:- lemma(p11:example7:a,
+((q => r) & ~ r) => ~ q,
+((q => r) & ~ r) => ~ q by gap).
+
+
+:- lemma(p11:example7:b,
+(p => (q => r)) & p & ~r => ~q,
+(p => (q => r)) & p & ~r => ~q by gap).
+
+:- lemma(p11:example7:c,
+(p => (q => r)) & p & ~r => ~q,
+(p => (q => r)) & p & ~r => ~q by gap).
+
+:- lemma(p11:example7:d,
+(p => (q => r)) & p & ~r => ~q,
+(p => (q => r)) & p & ~r => ~q by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p12:example8:a,
+(~p => q)& ~q => p,
+(~p => q)& ~q => p by gap).
+
+
+:- lemma(p12:example8:b,
+(p => ~q) & q => ~ p,
+(p => ~q) & q => ~ p by gap).
+
+
+:- lemma(p12:exercise3:2:a,
+(p => (p => q)) & p => q,
+(p => (p => q)) & p => q by gap).
+
+
+:- lemma(p12:exercise3:2:b,
+(q => (p => r)) & ~r & q => ~p,
+(q => (p => r)) & ~r & q => ~p by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p13:0,
+(p => q) => (~q => ~p),
+(p => q) => (~q => ~p) by gap).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p14:0,
+((~q => ~p) => (p => ~ ~q)),
+((~q => ~p) => (p => ~ ~q)) by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p15:0,
+p => p,
+p => p by gap).
+
+
+:- lemma(p15:example11,
+(q => r) => ((~q => ~p) => (p => r)),
+(q => r) => ((~q => ~p) => (p => r)) by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p17:example13,
+((p & q) => r) => (p => (q => r)),
+((p & q) => r) => (p => (q => r)) by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p18:example14,
+(p => (q => r)) => (p&q => r),
+(p => (q => r)) => (p&q => r) by gap).
+
+
+:- lemma(p18:example15,
+(p => q) => (p&r => q&r),
+(p => q) => (p&r => q&r) by gap).
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p19:0,
+p \/ q => q \/ p,
+assume(p \/ q,
+ cases(p, q \/ p,
+       q, q \/ p,
+       q \/ p),
+ q \/ p)).
+
+:- lemma(p19:0:bis,
+p \/ q => q \/ p,
+assume(p \/ q,
+ [],
+ q \/ p)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p20:example16,
+(q => r) => (p \/ q => p \/ r),
+(q => r) => (p \/ q => p \/ r) by gap).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p21:example17:0,
+(p \/ q) \/ r => p \/ (q \/ r),
+(p \/ q) \/ r => p \/ (q \/ r) by gap).
+
+
+:- lemma(p21:example17,
+((p \/ q)) \/ r => p \/ (q \/ r),
+assume((p \/ q) \/ r,
+ cases(
+  [case(p,p \/(q \/r)),
+   case(q,[q\/r,p\/(q\/r)]),
+   case(r,[q\/r,p\/(q\/r)])],
+  p \/ (q \/r)),
+p \/ (q \/ r))).
+
+:- lemma(p21:example18,
+p & (q \/ r) => (p&q)\/(p&r),
+p & (q \/ r) => (p&q)\/(p&r) by gap).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p22:exercise4:1:a,
+p&q => p,
+p&q => p by gap).
+
+
+:- lemma(p22:exercise4:1:b,
+p => (q => p&q),
+p => (q => p&q) by gap).
+
+
+:- lemma(p22:exercise4:1:c,
+p => ((p => q) => q),
+p => ((p => q) => q) by gap).
+
+
+% idem pour les 17 sequents de l'exo 4:2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p23:0,
+p & ~ p => q,
+p & ~ p => q by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p25:example20,
+~p \/ q => (p => q),
+~p \/ q => (p => q) by gap).
+
+
+:- lemma(p25:example21,
+(p => q) & (p => ~q) => ~p,
+(p => q) & (p => ~q) => ~p by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p26:example21,
+(p => ~p) => ~p,
+(p => ~p) => ~p by gap).
+
+
+:- lemma(p26:example22,
+(p => (q => r)) & p & ~ r => ~ q,
+(p => (q => r)) & p & ~ r => ~ q by gap).
+
+:- lemma(p26:example23,
+(p & ~ q => r) & ~ r & p => q,
+(p & ~ q => r) & ~ r & p => q by gap).
+
+
+:- lemma(p26:example23:bis,
+(p & ~ q => r) & ~ r & p => q,
+(p & ~ q => r) & ~ r & p => q by gap).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% p27, exo 1.5.1 et exo 1.5.2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p30:example24,
+(p => q) => ~ p \/ q,
+assume(p => q,
+ [~ p \/ p,
+  cases(~ p, ~ p \/ q,
+        p,   [q, ~ p \/ q],
+       ~ p \/ q)],
+ ~ p \/ q)).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p34:exequiv1:gd,
+~(p & q) => ~ p \/ ~ q,
+~(p & q) => ~ p \/ ~ q by gap).
+
+
+:- lemma(p34:exequiv1:dg,
+~p \/ ~q => ~(p&q),
+~p \/ ~q => ~(p&q) by gap).
+
+:- lemma(p34:exequiv1,
+~(p & q) <=> ~ p \/ ~ q,
+ [~(p & q) => ~ p \/ ~ q by lemma(p34:exequiv1:gd),
+  ~p \/ ~q => ~(p&q) by lemma(p34:exequiv1:dg)]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% p36-37, exo 1.6.1, 1.6.2 et 1.6.3
+
+
+:- bye.

@@ -1,0 +1,218 @@
+:- initialize.
+
+:- compile_gr(ws4).
+:- needs_gr(ws4).
+%:- set(standard_depth_thinking).
+%:- set(maximum_depth_thinking).
+:- tex_file(ws4_soln).
+
+:- lemma(man:odilon,
+succeeds man(odilon),
+succeeds man(odilon) by completion).
+
+
+:- lemma(woman:genevieve,
+succeeds woman(genevieve),
+succeeds woman(genevieve) by completion).
+
+:- lemma(man:exists,
+ex [x]:succeeds man(?x),
+succeeds man(odilon) by lemma(man:odilon)).
+
+
+:- lemma(woman:existsnot,
+ex [x]: fails woman(?x),
+fails woman(toto) by completion).
+
+:- lemma(man:term,
+all x: terminates man(?x),
+terminates man(?x) by completion).
+
+:- lemma(woman:term,
+all x: terminates woman(?x),
+terminates woman(?x) by completion).
+
+:- lemma(man:ground,
+all x:(succeeds man(?x) => gr(?x)),
+assume(succeeds man(?x),
+ [def succeeds man(?x) by completion,
+  cases(
+   [case(?x = odilon, gr(odilon)),
+    case(?x = remy, gr(remy)),
+    case(?x = edouard, gr(edouard))],
+   gr(?x))],
+ gr(?x))).
+
+
+:- lemma(woman:ground,
+all x:(succeeds woman(?x) => gr(?x)),
+assume(succeeds woman(?x),
+ [def succeeds woman(?x) by completion,
+  cases(
+   [case(?x = genevieve, gr(genevieve)),
+    case(?x = pauline, gr(pauline)),
+    case(?x = melaine, gr(melaine))],
+   gr(?x))],
+ gr(?x))).
+
+
+:- lemma(man:notwoman,
+all x:(succeeds man(?x) => fails woman(?x)),
+assume(succeeds man(?x),
+ [contra(?x = genevieve,
+   [def succeeds man(?x) by completion,
+    cases([case(?x = odilon,[]),case(?x = remy,[]),case(?x = edouard,[])],
+     ff)]),
+  contra(?x = pauline,
+   [def succeeds man(?x) by completion,
+    cases([case(?x = odilon,[]),case(?x = remy,[]),case(?x = edouard,[])],
+     ff)]),
+  contra(?x = melaine,
+   [def succeeds man(?x) by completion,
+    cases([case(?x = odilon,[]),case(?x = remy,[]),case(?x = edouard,[])],
+     ff)]),
+  fails woman(?x) by completion],
+ fails woman(?x))).
+
+
+:- lemma(child:groundground,
+all [x,y]: (succeeds child(?x,?y) => gr(?x) & gr(?y)),
+assume(succeeds child(?x,?y),
+ [def succeeds child(?x,?y) by completion,
+  cases(
+   [case(?x = melaine & ?y = odilon, gr(melaine)),
+    case(?x = melaine & ?y = genevieve, gr(melaine)),
+    case(?x = pauline & ?y = odilon, gr(pauline)),
+    case(?x = pauline & ?y = genevieve, gr(pauline)),
+    case(?x = edouard & ?y = odilon, gr(edouard)),
+    case(?x = edouard & ?y = genevieve, gr(edouard))],
+   gr(?x)),
+  def succeeds child(?x,?y) by completion,
+  cases(
+   [case(?x = melaine & ?y = odilon, gr(odilon)),
+    case(?x = melaine & ?y = genevieve, gr(genevieve)),
+    case(?x = pauline & ?y = odilon, gr(odilon)),
+    case(?x = pauline & ?y = genevieve, gr(genevieve)),
+    case(?x = edouard & ?y = odilon, gr(odilon)),
+    case(?x = edouard & ?y = genevieve, gr(genevieve))],
+   gr(?y))],
+ gr(?x) & gr(?y))).
+
+
+:- lemma(father:groundground,
+all [x,y]:(succeeds father(?x,?y) => gr(?x) & gr(?y)),
+assume(succeeds father(?x,?y),
+ [def succeeds father(?x,?y) by completion,
+  gr(?x) by lemma(man:ground),
+  def succeeds father(?x,?y) by completion,
+  gr(?y) by lemma(child:groundground)],
+ gr(?x) & gr(?y))).
+
+
+:- lemma(father:man,
+all [x,y]:(succeeds father(?x,?y) => succeeds man(?x)),
+assume(succeeds father(?x,?y),
+ [def succeeds father(?x,?y) by completion],
+ succeeds man(?x))).
+
+
+:- lemma(father:child,
+all [x,y]:(succeeds father(?x,?y) => succeeds child(?y,?x)),
+assume(succeeds father(?x,?y),
+ [def succeeds father(?x,?y) by completion,
+  succeeds child(?y,?x)],
+ succeeds child(?y,?x))).
+
+/*
+:- lemma(brother_or_sister:groundground,
+all [x,y]:(succeeds brother_or_sister(?x,?y) => gr(?x) & gr(?y)),
+assume(succeeds brother_or_sister(?x,?y),
+ [def succeeds brother_or_sister(?x,?y) by completion,
+  exists(z,
+   succeeds child(?x,?z) & succeeds child(?y,?z) & succeeds ?x \== ?y,
+   gr(?x)  by lemma(child:groundground),
+   gr(?x)),
+  def succeeds brother_or_sister(?x,?y) by completion,
+  exists(z,
+   succeeds child(?x,?z) & succeeds child(?y,?z) & succeeds ?x \== ?y,
+   gr(?y) by lemma(child:groundground),
+   gr(?y))],
+ gr(?x) & gr(?y))).
+*/
+
+:- lemma(brother:brother_or_sister,
+all [x,y]:(succeeds brother(?x,?y) => succeeds brother_or_sister(?x,?y)),
+assume(succeeds brother(?x,?y),
+ [def succeeds brother(?x,?y) by completion],
+ succeeds brother_or_sister(?x,?y))).
+
+:- lemma(sister:brother_or_sister,
+all [x,y]:(succeeds sister(?x,?y) => succeeds brother_or_sister(?x,?y)),
+assume(succeeds sister(?x,?y),
+ [def succeeds sister(?x,?y) by completion],
+ succeeds brother_or_sister(?x,?y))).
+
+:- lemma(brother_or_sister:brother_or_sister,
+all [x,y]:((succeeds brother(?x,?y) \/ succeeds sister(?x,?y)) => succeeds brother_or_sister(?x,?y)),
+assume(succeeds brother(?x,?y) \/ succeeds sister(?x,?y),
+ [cases(succeeds brother(?x,?y),
+   [def succeeds brother(?x,?y) by completion,
+    def succeeds brother_or_sister(?x,?y) by completion],
+   succeeds sister(?x,?y),
+   [def succeeds sister(?x,?y) by completion,
+    def succeeds brother_or_sister(?x,?y) by completion],
+   ex z: succeeds child(?x,?z) & succeeds child(?y,?z) &
+    succeeds ?x \== ?y),
+  succeeds brother_or_sister(?x,?y) by completion],
+ succeeds brother_or_sister(?x,?y))).
+
+
+/*
+:- lemma(brother_or_sister:child,
+all [x,y]:(succeeds brother_or_sister(?x,?y) => (ex z: succeeds child(?x,?z))),
+assume(succeeds brother_or_sister(?x,?y),
+ [def succeeds brother_or_sister(?x,?y) by completion,
+  ex z: (succeeds child(?x,?z) & succeeds child(?y,?z) & succeeds ?x \== ?y),
+  exists(z,
+   succeeds child(?x,?z) & succeeds child(?y,?z) & succeeds ?x \== ?y,
+   [],
+   ex z: succeeds child(?x,?z))],
+ ex z: succeeds child(?x,?z))).
+*/
+
+:- lemma(child:man_ou_woman,
+all [x,y]:(succeeds child(?x,?y) => (succeeds man(?x) \/ succeeds woman(?x))),
+assume(succeeds child(?x,?y),
+ [def succeeds child(?x,?y) by completion,
+  %ex z: (succeeds child(?x,?z) & succeeds child(?y,?z) & succeeds ?x \== ?y),
+  cases(
+   [case(?x = melaine & ?y = odilon, [succeeds woman(?x) by completion]),
+    case(?x = melaine & ?y = genevieve, [succeeds woman(?x) by completion]),
+    case(?x = pauline & ?y = odilon, [succeeds woman(?x) by completion]),
+    case(?x = pauline & ?y = genevieve, [succeeds woman(?x) by completion]),
+    case(?x = edouard & ?y = odilon, [succeeds man(?x) by completion]),
+    case(?x = edouard & ?y = genevieve, [succeeds man(?x) by completion])],
+   succeeds man(?x) \/ succeeds woman(?x))],
+ succeeds man(?x) \/ succeeds woman(?x))).
+
+
+/* 
+:- lemma(brother_or_sister:brother_or_sister,
+all [x,y]:(succeeds brother_or_sister(?x,?y) => (succeeds brother(?x,?y) \/ succeeds sister(?x,?y))),
+assume(succeeds brother_or_sister(?x,?y),
+ [def succeeds brother_or_sister(?x,?y) by completion,
+  (ex z: succeeds child(?x,?z) & succeeds child(?y,?z) & succeeds ?x \== ?y),
+  exists(z,succeeds child(?x,?z) & succeeds child(?y,?z) & succeeds ?x \== ?y,
+   [succeeds child(?x,?z),
+    succeeds man(?x) \/ succeeds woman(?x) by lemma(child:man_ou_woman),
+    cases(
+     succeeds man(?x),
+     [succeeds brother(?x,?y),succeeds brother(?x,?y) \/ succeeds sister(?x,?y)],
+     succeeds woman(?x),
+     [succeeds soeur(?x,?y),succeeds brother(?x,?y) \/ succeeds sister(?x,?y)],
+     succeeds brother(?x,?y) \/ succeeds sister(?x,?y))],
+  succeeds brother(?x,?y) \/ succeeds sister(?x,?y))],
+ succeeds brother(?x,?y) \/ succeeds sister(?x,?y))).
+
+*/
+:- bye.

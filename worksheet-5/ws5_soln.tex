@@ -1,0 +1,115 @@
+\input ../tex/proofmacros.tex
+!title{ws5}
+
+!lemma{nat:ground}{!0!1!all[x]!,!1(!1!S !Tt{nat}(x)!2!to gr(x))!2!2}
+!Pr{
+!Ind{$!0!1!all[x]!,!1(!1!S !Tt{nat}(x)!2!to gr(x))!2!2$}
+!Stp{none}
+!Estp{!0gr(!Tt{0})}
+!Stp{$!0gr(x)$ and $!0!1!S !Tt{nat}(x)!2$}
+!Estp{!0gr(!Tt{s}(x))}
+!Eind}
+!Epr
+
+!lemma{add:ground:1}{!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to gr(x))!2!2}
+!Pr{
+!Ind{$!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to gr(x))!2!2$}
+!Stp{none}
+!Estp{!0gr(!Tt{0})}
+!Stp{$!0gr(x)$ and $!0!1!S !Tt{add}(x,y,z)!2$}
+!Estp{!0gr(!Tt{s}(x))}
+!Eind}
+!Epr
+
+!lemma{add:ground:2}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land gr(y)!2!to gr(z))!2!2}
+!Pr{
+!Ind{$!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to !1gr(y)!to gr(z)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1gr(y)!to gr(y)!2}
+!Stp{$!0!1gr(y)!to gr(z)!2$ and $!0!1!S !Tt{add}(x,y,z)!2$}
+!Ass{!0gr(y)}
+$!0gr(z)$.
+$!0gr(!Tt{s}(z))$.
+!Eass{!0!1gr(y)!to gr(!Tt{s}(z))!2}
+!Estp{!0!1gr(y)!to gr(!Tt{s}(z))!2}
+!Eind}
+!Epr
+
+!lemma{add:ground:3}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land gr(z)!2!to gr(y))!2!2}
+!Pr{
+!Ind{$!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to !1gr(z)!to gr(y)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1gr(y)!to gr(y)!2}
+!Stp{$!0!1gr(z)!to gr(y)!2$ and $!0!1!S !Tt{add}(x,y,z)!2$}
+!Ass{!0gr(!Tt{s}(z))}
+$!0gr(z)$.
+!Eass{!0!1gr(!Tt{s}(z))!to gr(y)!2}
+!Estp{!0!1gr(!Tt{s}(z))!to gr(y)!2}
+!Eind}
+!Epr
+
+!lemma{add:types:2}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land !1!S !Tt{nat}(y)!2!2!to !1!S !Tt{nat}(z)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to !1!1!S !Tt{nat}(y)!2!to !1!S !Tt{nat}(z)!2!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!1!S !Tt{nat}(y)!2!to !1!S !Tt{nat}(y)!2!2}
+!Stp{$!0!1!1!S !Tt{nat}(y)!2!to !1!S !Tt{nat}(z)!2!2$ and $!0!1!S !Tt{add}(x,y,z)!2$}
+!Estp{!0!1!1!S !Tt{nat}(y)!2!to !1!S !Tt{nat}(!Tt{s}(z))!2!2}
+!Eind}
+!Epr
+
+!lemma{add:types:3}{!0!1!all[x,y,z]!,!1(!1!1!S !Tt{add}(x,y,z)!2!land !1!S !Tt{nat}(z)!2!2!to !1!S !Tt{nat}(y)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to !1!1!S !Tt{nat}(z)!2!to !1!S !Tt{nat}(y)!2!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!1!S !Tt{nat}(y)!2!to !1!S !Tt{nat}(y)!2!2}
+!Stp{$!0!1!1!S !Tt{nat}(z)!2!to !1!S !Tt{nat}(y)!2!2$ and $!0!1!S !Tt{add}(x,y,z)!2$}
+!Ass{!0!1!S !Tt{nat}(!Tt{s}(z))!2}
+$!0!1!D !1!S !Tt{nat}(!Tt{s}(z))!2!2$! by~completion.
+!Eass{!0!1!1!S !Tt{nat}(!Tt{s}(z))!2!to !1!S !Tt{nat}(y)!2!2}
+!Estp{!0!1!1!S !Tt{nat}(!Tt{s}(z))!2!to !1!S !Tt{nat}(y)!2!2}
+!Eind}
+!Epr
+
+!lemma{nat:termination}{!0!1!all[x]!,!1(!1!S !Tt{nat}(x)!2!to !1!T !Tt{nat}(x)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[x]!,!1(!1!S !Tt{nat}(x)!2!to !1!T !Tt{nat}(x)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!T !Tt{nat}(!Tt{0})!2}
+!Stp{$!0!1!T !Tt{nat}(x)!2$ and $!0!1!S !Tt{nat}(x)!2$}
+$!0!1!D !1!T !Tt{nat}(!Tt{s}(x))!2!2$! by~completion.
+!Estp{!0!1!T !Tt{nat}(!Tt{s}(x))!2}
+!Eind}
+!Epr
+
+!lemma{add:termination:1}{!0!1!all[x,y,z]!,!1(!1!S !Tt{nat}(x)!2!to !1!T !Tt{add}(x,y,z)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[x]!,!1(!1!S !Tt{nat}(x)!2!to !1!all[y,z]!,!1!T !Tt{add}(x,y,z)!2!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!all[y,z]!,!1!T !Tt{add}(!Tt{0},y,z)!2!2}
+!Stp{$!0!1!all[y,z]!,!1!T !Tt{add}(x,y,z)!2!2$ and $!0!1!S !Tt{nat}(x)!2$}
+!Estp{!0!1!all[y,z]!,!1!T !Tt{add}(!Tt{s}(x),y,z)!2!2}
+!Eind}
+!Epr
+
+!lemma{add:termination:2}{!0!1!all[x,y,z]!,!1(!1!S !Tt{nat}(z)!2!to !1!T !Tt{add}(x,y,z)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[z]!,!1(!1!S !Tt{nat}(z)!2!to !1!all[x,y]!,!1!T !Tt{add}(x,y,z)!2!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!all[x,y]!,!1!T !Tt{add}(x,y,!Tt{0})!2!2}
+!Stp{$!0!1!all[!v{0},y]!,!1!T !Tt{add}(!v{0},y,x)!2!2$ and $!0!1!S !Tt{nat}(x)!2$}
+!Estp{!0!1!all[!v{0},y]!,!1!T !Tt{add}(!v{0},y,!Tt{s}(x))!2!2}
+!Eind}
+!Epr
+
+!lemma{add:termination:3}{!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to !1!T !Tt{add}(x,y,z)!2)!2!2}
+!Pr{
+!Ind{$!0!1!all[x,y,z]!,!1(!1!S !Tt{add}(x,y,z)!2!to !1!T !Tt{add}(x,y,z)!2)!2!2$}
+!Stp{none}
+!Estp{!0!1!T !Tt{add}(!Tt{0},y,y)!2}
+!Stp{$!0!1!T !Tt{add}(x,y,z)!2$ and $!0!1!S !Tt{add}(x,y,z)!2$}
+!Estp{!0!1!T !Tt{add}(!Tt{s}(x),y,!Tt{s}(z))!2}
+!Eind}
+!Epr
+
+!end

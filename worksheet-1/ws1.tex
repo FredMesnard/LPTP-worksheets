@@ -1,0 +1,279 @@
+\input /Users/fred/Desktop/lptp/tex/proofmacros.tex
+!title{ws1}
+
+!lemma{p7:example4}{!0!1!1!Tt{p}!land !Tt{q}!land !Tt{r}!2!to !1!Tt{q}!land !Tt{r}!2!2}
+!Pr{
+!Ass{!0!1!Tt{p}!land !Tt{q}!land !Tt{r}!2}
+!Eass{!0!1!1!Tt{p}!land !Tt{q}!land !Tt{r}!2!to !1!Tt{q}!land !Tt{r}!2!2}}
+!Epr
+
+!lemma{p8:exercise2:1}{!0!1!1!Tt{p}!land !Tt{q}!land !Tt{r}!land !Tt{s}!land !Tt{t}!2!to !1!Tt{q}!land !Tt{s}!2!2}
+
+!lemma{p8:exercise2:2}{!0!1!1!Tt{p}!land !Tt{q}!2!to !1!Tt{q}!land !Tt{p}!2!2}
+!Pr{
+$!0!top$.}
+!Epr
+
+!lemma{p8:exercise2:3}{!0!1!1!Tt{p}!land !Tt{q}!land !Tt{r}!2!to !1!Tt{p}!land !Tt{q}!land !Tt{r}!2!2}
+!Pr{
+$!0!top$.}
+!Epr
+
+!lemma{marianne}{!0!top}
+
+!lemma{p9:0}{!0!1!Tt{p}!to !1!lnot !1!lnot !Tt{p}!2!2!2}
+!Pr{
+!Ass{!0!Tt{p}}
+!Con{!0!1!lnot !Tt{p}!2}
+$!0!bot$.
+!Econ{!0!1!lnot !1!lnot !Tt{p}!2!2}
+!Eass{!0!1!Tt{p}!to !1!lnot !1!lnot !Tt{p}!2!2!2}}
+!Epr
+
+!lemma{p9:1}{!0!1!1!lnot !1!lnot !Tt{p}!2!2!to !Tt{p}!2}
+!Pr{
+!Ass{!0!1!lnot !1!lnot !Tt{p}!2!2}
+!Dir{!0!1!lnot !Tt{p}!2}
+$!0!bot$.
+!Edir{!0!Tt{p}}
+!Eass{!0!1!1!lnot !1!lnot !Tt{p}!2!2!to !Tt{p}!2}}
+!Epr
+
+!lemma{p9:example5:a}{!0!1!1!lnot !1!lnot !1(!Tt{q}!land !Tt{r})!2!2!2!to !1!Tt{q}!land !Tt{r}!2!2}
+!Pr{
+$!0!1!1!lnot !1!lnot !1(!Tt{q}!land !Tt{r})!2!2!2!to !1!Tt{q}!land !Tt{r}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p9:example5:b}{!0!1!1!Tt{p}!land !1!lnot !1!lnot !1(!Tt{q}!land !Tt{r})!2!2!2!2!to !1!1!lnot !1!lnot !Tt{p}!2!2!land !Tt{r}!2!2}
+!Pr{
+!Ass{!0!1!Tt{p}!land !1!lnot !1!lnot !1(!Tt{q}!land !Tt{r})!2!2!2!2}
+$!0!1!lnot !1!lnot !Tt{p}!2!2$!by{Lemma}{p9:0}.
+$!0!1!Tt{q}!land !Tt{r}!2$!by{Lemma}{p9:example5:a}.
+$!0!Tt{r}$.
+!Eass{!0!1!1!Tt{p}!land !1!lnot !1!lnot !1(!Tt{q}!land !Tt{r})!2!2!2!2!to !1!1!lnot !1!lnot !Tt{p}!2!2!land !Tt{r}!2!2}}
+!Epr
+
+!lemma{p10:0}{!0!1!1!Tt{p}!land !1(!Tt{p}!to !Tt{q})!2!2!to !Tt{q}!2}
+!Pr{
+$!0!1!1!Tt{p}!land !1(!Tt{p}!to !Tt{q})!2!2!to !Tt{q}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p10:1}{!0!1!1!1(!1!lnot !Tt{p}!2!lor !Tt{q})!2!land !1(!1!1!lnot !Tt{p}!2!lor !Tt{q}!2!to !1!Tt{r}!lor !1!lnot !Tt{p}!2!2)!2!2!to !1!Tt{r}!lor !1!lnot !Tt{p}!2!2!2}
+!Pr{
+$!0!1!1!1(!1!lnot !Tt{p}!2!lor !Tt{q})!2!land !1(!1!1!lnot !Tt{p}!2!lor !Tt{q}!2!to !1!Tt{r}!lor !1!lnot !Tt{p}!2!2)!2!2!to !1!Tt{r}!lor !1!lnot !Tt{p}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p11:0}{!0!1!1!Tt{p}!land !1(!Tt{p}!to !Tt{q})!2!land !1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!2!to !Tt{r}!2}
+!Pr{
+$!0!1!1!Tt{p}!land !1(!Tt{p}!to !Tt{q})!2!land !1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!2!to !Tt{r}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p11:example7:a}{!0!1!1!1(!Tt{q}!to !Tt{r})!2!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{q}!to !Tt{r})!2!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p11:example7:b}{!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p11:example7:c}{!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p11:example7:d}{!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p12:example8:a}{!0!1!1!1(!1!lnot !Tt{p}!2!to !Tt{q})!2!land !1!lnot !Tt{q}!2!2!to !Tt{p}!2}
+!Pr{
+$!0!1!1!1(!1!lnot !Tt{p}!2!to !Tt{q})!2!land !1!lnot !Tt{q}!2!2!to !Tt{p}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p12:example8:b}{!0!1!1!1(!Tt{p}!to !1!lnot !Tt{q}!2)!2!land !Tt{q}!2!to !1!lnot !Tt{p}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{p}!to !1!lnot !Tt{q}!2)!2!land !Tt{q}!2!to !1!lnot !Tt{p}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p12:exercise3:2:a}{!0!1!1!1(!Tt{p}!to !1!Tt{p}!to !Tt{q}!2)!2!land !Tt{p}!2!to !Tt{q}!2}
+!Pr{
+$!0!1!1!1(!Tt{p}!to !1!Tt{p}!to !Tt{q}!2)!2!land !Tt{p}!2!to !Tt{q}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p12:exercise3:2:b}{!0!1!1!1(!Tt{q}!to !1!Tt{p}!to !Tt{r}!2)!2!land !1!lnot !Tt{r}!2!land !Tt{q}!2!to !1!lnot !Tt{p}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{q}!to !1!Tt{p}!to !Tt{r}!2)!2!land !1!lnot !Tt{r}!2!land !Tt{q}!2!to !1!lnot !Tt{p}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p13:0}{!0!1!1(!Tt{p}!to !Tt{q})!2!to !1!1!lnot !Tt{q}!2!to !1!lnot !Tt{p}!2!2!2}
+!Pr{
+$!0!1!1(!Tt{p}!to !Tt{q})!2!to !1!1!lnot !Tt{q}!2!to !1!lnot !Tt{p}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p14:0}{!0!1!1(!1!lnot !Tt{q}!2!to !1!lnot !Tt{p}!2)!2!to !1!Tt{p}!to !1!lnot !1!lnot !Tt{q}!2!2!2!2}
+!Pr{
+$!0!1!1(!1!lnot !Tt{q}!2!to !1!lnot !Tt{p}!2)!2!to !1!Tt{p}!to !1!lnot !1!lnot !Tt{q}!2!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p15:0}{!0!1!Tt{p}!to !Tt{p}!2}
+!Pr{
+$!0!1!Tt{p}!to !Tt{p}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p15:example11}{!0!1!1(!Tt{q}!to !Tt{r})!2!to !1!1(!1!lnot !Tt{q}!2!to !1!lnot !Tt{p}!2)!2!to !1!Tt{p}!to !Tt{r}!2!2!2}
+!Pr{
+$!0!1!1(!Tt{q}!to !Tt{r})!2!to !1!1(!1!lnot !Tt{q}!2!to !1!lnot !Tt{p}!2)!2!to !1!Tt{p}!to !Tt{r}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p17:example13}{!0!1!1(!1!Tt{p}!land !Tt{q}!2!to !Tt{r})!2!to !1!Tt{p}!to !1!Tt{q}!to !Tt{r}!2!2!2}
+!Pr{
+$!0!1!1(!1!Tt{p}!land !Tt{q}!2!to !Tt{r})!2!to !1!Tt{p}!to !1!Tt{q}!to !Tt{r}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p18:example14}{!0!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!to !1!1!Tt{p}!land !Tt{q}!2!to !Tt{r}!2!2}
+!Pr{
+$!0!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!to !1!1!Tt{p}!land !Tt{q}!2!to !Tt{r}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p18:example15}{!0!1!1(!Tt{p}!to !Tt{q})!2!to !1!1!Tt{p}!land !Tt{r}!2!to !1!Tt{q}!land !Tt{r}!2!2!2}
+!Pr{
+$!0!1!1(!Tt{p}!to !Tt{q})!2!to !1!1!Tt{p}!land !Tt{r}!2!to !1!Tt{q}!land !Tt{r}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p19:0}{!0!1!1!Tt{p}!lor !Tt{q}!2!to !1!Tt{q}!lor !Tt{p}!2!2}
+!Pr{
+!Ass{!0!1!Tt{p}!lor !Tt{q}!2}
+!Cas{!0!Tt{p}}
+$!0!1!Tt{q}!lor !Tt{p}!2$.
+!Ecas
+!Cas{!0!Tt{q}}
+$!0!1!Tt{q}!lor !Tt{p}!2$.
+!Ecas
+!Fin{!0!1!Tt{q}!lor !Tt{p}!2}
+!Eass{!0!1!1!Tt{p}!lor !Tt{q}!2!to !1!Tt{q}!lor !Tt{p}!2!2}}
+!Epr
+
+!lemma{p19:0:bis}{!0!1!1!Tt{p}!lor !Tt{q}!2!to !1!Tt{q}!lor !Tt{p}!2!2}
+!Pr{
+!Ass{!0!1!Tt{p}!lor !Tt{q}!2}
+!Eass{!0!1!1!Tt{p}!lor !Tt{q}!2!to !1!Tt{q}!lor !Tt{p}!2!2}}
+!Epr
+
+!lemma{p20:example16}{!0!1!1(!Tt{q}!to !Tt{r})!2!to !1!1!Tt{p}!lor !Tt{q}!2!to !1!Tt{p}!lor !Tt{r}!2!2!2}
+!Pr{
+$!0!1!1(!Tt{q}!to !Tt{r})!2!to !1!1!Tt{p}!lor !Tt{q}!2!to !1!Tt{p}!lor !Tt{r}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p21:example17:0}{!0!1!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!to !1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!2}
+!Pr{
+$!0!1!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!to !1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p21:example17}{!0!1!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!to !1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!2}
+!Pr{
+!Ass{!0!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2}
+!Cas{!0!Tt{p}}
+$!0!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2$.
+!Ecas
+!Cas{!0!Tt{q}}
+$!0!1!Tt{q}!lor !Tt{r}!2$.
+$!0!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2$.
+!Ecas
+!Cas{!0!Tt{r}}
+$!0!1!Tt{q}!lor !Tt{r}!2$.
+$!0!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2$.
+!Ecas
+!Fin{!0!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2}
+!Eass{!0!1!1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!to !1!Tt{p}!lor !Tt{q}!lor !Tt{r}!2!2}}
+!Epr
+
+!lemma{p21:example18}{!0!1!1!Tt{p}!land !1(!Tt{q}!lor !Tt{r})!2!2!to !1!1!Tt{p}!land !Tt{q}!2!lor !1!Tt{p}!land !Tt{r}!2!2!2}
+!Pr{
+$!0!1!1!Tt{p}!land !1(!Tt{q}!lor !Tt{r})!2!2!to !1!1!Tt{p}!land !Tt{q}!2!lor !1!Tt{p}!land !Tt{r}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p22:exercise4:1:a}{!0!1!1!Tt{p}!land !Tt{q}!2!to !Tt{p}!2}
+!Pr{
+$!0!1!1!Tt{p}!land !Tt{q}!2!to !Tt{p}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p22:exercise4:1:b}{!0!1!Tt{p}!to !1!Tt{q}!to !1!Tt{p}!land !Tt{q}!2!2!2}
+!Pr{
+$!0!1!Tt{p}!to !1!Tt{q}!to !1!Tt{p}!land !Tt{q}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p22:exercise4:1:c}{!0!1!Tt{p}!to !1!1(!Tt{p}!to !Tt{q})!2!to !Tt{q}!2!2}
+!Pr{
+$!0!1!Tt{p}!to !1!1(!Tt{p}!to !Tt{q})!2!to !Tt{q}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p23:0}{!0!1!1!Tt{p}!land !1!lnot !Tt{p}!2!2!to !Tt{q}!2}
+!Pr{
+$!0!1!1!Tt{p}!land !1!lnot !Tt{p}!2!2!to !Tt{q}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p25:example20}{!0!1!1!1!lnot !Tt{p}!2!lor !Tt{q}!2!to !1!Tt{p}!to !Tt{q}!2!2}
+!Pr{
+$!0!1!1!1!lnot !Tt{p}!2!lor !Tt{q}!2!to !1!Tt{p}!to !Tt{q}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p25:example21}{!0!1!1!1(!Tt{p}!to !Tt{q})!2!land !1(!Tt{p}!to !1!lnot !Tt{q}!2)!2!2!to !1!lnot !Tt{p}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{p}!to !Tt{q})!2!land !1(!Tt{p}!to !1!lnot !Tt{q}!2)!2!2!to !1!lnot !Tt{p}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p26:example21}{!0!1!1(!Tt{p}!to !1!lnot !Tt{p}!2)!2!to !1!lnot !Tt{p}!2!2}
+!Pr{
+$!0!1!1(!Tt{p}!to !1!lnot !Tt{p}!2)!2!to !1!lnot !Tt{p}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p26:example22}{!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2}
+!Pr{
+$!0!1!1!1(!Tt{p}!to !1!Tt{q}!to !Tt{r}!2)!2!land !Tt{p}!land !1!lnot !Tt{r}!2!2!to !1!lnot !Tt{q}!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p26:example23}{!0!1!1!1(!1!Tt{p}!land !1!lnot !Tt{q}!2!2!to !Tt{r})!2!land !1!lnot !Tt{r}!2!land !Tt{p}!2!to !Tt{q}!2}
+!Pr{
+$!0!1!1!1(!1!Tt{p}!land !1!lnot !Tt{q}!2!2!to !Tt{r})!2!land !1!lnot !Tt{r}!2!land !Tt{p}!2!to !Tt{q}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p26:example23:bis}{!0!1!1!1(!1!Tt{p}!land !1!lnot !Tt{q}!2!2!to !Tt{r})!2!land !1!lnot !Tt{r}!2!land !Tt{p}!2!to !Tt{q}!2}
+!Pr{
+$!0!1!1!1(!1!Tt{p}!land !1!lnot !Tt{q}!2!2!to !Tt{r})!2!land !1!lnot !Tt{r}!2!land !Tt{p}!2!to !Tt{q}!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p30:example24}{!0!1!1(!Tt{p}!to !Tt{q})!2!to !1!1!lnot !Tt{p}!2!lor !Tt{q}!2!2}
+!Pr{
+!Ass{!0!1!Tt{p}!to !Tt{q}!2}
+$!0!1!1!lnot !Tt{p}!2!lor !Tt{p}!2$.
+!Cas{!0!1!lnot !Tt{p}!2}
+$!0!1!1!lnot !Tt{p}!2!lor !Tt{q}!2$.
+!Ecas
+!Cas{!0!Tt{p}}
+$!0!Tt{q}$.
+$!0!1!1!lnot !Tt{p}!2!lor !Tt{q}!2$.
+!Ecas
+!Fin{!0!1!1!lnot !Tt{p}!2!lor !Tt{q}!2}
+!Eass{!0!1!1(!Tt{p}!to !Tt{q})!2!to !1!1!lnot !Tt{p}!2!lor !Tt{q}!2!2}}
+!Epr
+
+!lemma{p34:exequiv1:gd}{!0!1!1!lnot !1(!Tt{p}!land !Tt{q})!2!2!to !1!1!lnot !Tt{p}!2!lor !1!lnot !Tt{q}!2!2!2}
+!Pr{
+$!0!1!1!lnot !1(!Tt{p}!land !Tt{q})!2!2!to !1!1!lnot !Tt{p}!2!lor !1!lnot !Tt{q}!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p34:exequiv1:dg}{!0!1!1!1!lnot !Tt{p}!2!lor !1!lnot !Tt{q}!2!2!to !1!lnot !1(!Tt{p}!land !Tt{q})!2!2!2}
+!Pr{
+$!0!1!1!1!lnot !Tt{p}!2!lor !1!lnot !Tt{q}!2!2!to !1!lnot !1(!Tt{p}!land !Tt{q})!2!2!2$! by~{!bf GAP}.}
+!Epr
+
+!lemma{p34:exequiv1}{!0!1!1!lnot !1(!Tt{p}!land !Tt{q})!2!2!eqv !1!1!lnot !Tt{p}!2!lor !1!lnot !Tt{q}!2!2!2}
+!Pr{
+$!0!1!1!lnot !1(!Tt{p}!land !Tt{q})!2!2!to !1!1!lnot !Tt{p}!2!lor !1!lnot !Tt{q}!2!2!2$!by{Lemma}{p34:exequiv1:gd}.
+$!0!1!1!1!lnot !Tt{p}!2!lor !1!lnot !Tt{q}!2!2!to !1!lnot !1(!Tt{p}!land !Tt{q})!2!2!2$!by{Lemma}{p34:exequiv1:dg}.}
+!Epr
+
+!end

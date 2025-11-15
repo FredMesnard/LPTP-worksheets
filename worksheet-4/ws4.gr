@@ -1,0 +1,75 @@
+
+:- assert_clauses(n(brother,2),[
+ clause([n(brother,2),$(x),$(y)],
+  [&,[n(man,1),$(x)],[n(brother_or_sister,2),$(x),$(y)]],
+  [x,y]/0)
+]).
+
+:- assert_clauses(n(brother_or_sister,2),[
+ clause([n(brother_or_sister,2),$(x),$(y)],
+  [&,[n(child,2),$(x),$(z)],[n(child,2),$(y),$(z)],[n(\==,2),$(x),$(y)]],
+  [x,y,z]/0)
+]).
+
+:- assert_clauses(n(child,2),[
+ clause([n(child,2),[n(melaine,0)],[n(odilon,0)]],
+  [&],
+  []/0),
+ clause([n(child,2),[n(melaine,0)],[n(genevieve,0)]],
+  [&],
+  []/0),
+ clause([n(child,2),[n(pauline,0)],[n(odilon,0)]],
+  [&],
+  []/0),
+ clause([n(child,2),[n(pauline,0)],[n(genevieve,0)]],
+  [&],
+  []/0),
+ clause([n(child,2),[n(edouard,0)],[n(odilon,0)]],
+  [&],
+  []/0),
+ clause([n(child,2),[n(edouard,0)],[n(genevieve,0)]],
+  [&],
+  []/0)
+]).
+
+:- assert_clauses(n(father,2),[
+ clause([n(father,2),$(x),$(y)],
+  [&,[n(man,1),$(x)],[n(child,2),$(y),$(x)]],
+  [x,y]/0)
+]).
+
+:- assert_clauses(n(man,1),[
+ clause([n(man,1),[n(odilon,0)]],
+  [&],
+  []/0),
+ clause([n(man,1),[n(remy,0)]],
+  [&],
+  []/0),
+ clause([n(man,1),[n(edouard,0)]],
+  [&],
+  []/0)
+]).
+
+:- assert_clauses(n(mother,2),[
+ clause([n(mother,2),$(x),$(y)],
+  [&,[n(woman,1),$(x)],[n(child,2),$(y),$(x)]],
+  [x,y]/0)
+]).
+
+:- assert_clauses(n(sister,2),[
+ clause([n(sister,2),$(x),$(y)],
+  [&,[n(woman,1),$(x)],[n(brother_or_sister,2),$(x),$(y)]],
+  [x,y]/0)
+]).
+
+:- assert_clauses(n(woman,1),[
+ clause([n(woman,1),[n(genevieve,0)]],
+  [&],
+  []/0),
+ clause([n(woman,1),[n(pauline,0)]],
+  [&],
+  []/0),
+ clause([n(woman,1),[n(melaine,0)]],
+  [&],
+  []/0)
+]).

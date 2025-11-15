@@ -1,0 +1,109 @@
+\input ../tex/proofmacros.tex
+!title{fiche3_corrige}
+
+!lemma{p:term}{!0!1!T !Tt{p}!2}
+!Pr{
+$!0!1!T !Tt{p}!2$! by~completion.}
+!Epr
+
+!lemma{p:succes}{!0!1!S !Tt{p}!2}
+!Pr{
+$!0!1!S !Tt{p}!2$! by~completion.}
+!Epr
+
+!lemma{q:succes}{!0!1!S !Tt{q}!2}
+!Pr{
+$!0!1!S !Tt{q}!2$! by~sld.}
+!Epr
+
+!lemma{p:faux_implique_tout}{!0!1!1!F !Tt{p}!2!to !Tt{a} !eq !Tt{b}!2}
+!Pr{
+!Ass{!0!1!F !Tt{p}!2}
+$!0!1!S !Tt{p}!2$! by~completion.
+$!0!bot$.
+!Eass{!0!1!1!F !Tt{p}!2!to !Tt{a} !eq !Tt{b}!2}}
+!Epr
+
+!lemma{r:succes}{!0!1!S !Tt{r}!2}
+!Pr{
+$!0!1!S !Tt{p}!2$! by~sld.}
+!Epr
+
+!lemma{r:term}{!0!1!T !Tt{r}!2}
+!Pr{
+$!0!1!T !Tt{p}!2$! by~completion.
+$!0!1!T !Tt{q}!2$! by~completion.
+$!0!1!1!T !Tt{p}!2!land !1!T !Tt{q}!2!2$.}
+!Epr
+
+!lemma{s:succes}{!0!1!S !Tt{s}!2}
+!Pr{
+$!0!1!S !Tt{p}!2$! by~sld.
+$!0!1!S !Tt{q}!2$! by~completion.}
+!Epr
+
+!lemma{s:term}{!0!1!T !Tt{s}!2}
+!Pr{
+$!0!1!T !Tt{p}!2$! by~completion.
+$!0!1!T !Tt{q}!2$! by~completion.
+$!0!1!T !Tt{s}!2$! by~completion.}
+!Epr
+
+!lemma{t:succes}{!0!1!S !Tt{t}!2}
+!Pr{
+$!0!1!S !Tt{t}!2$! by~sld.}
+!Epr
+
+!lemma{u:total}{!0!1!1!T !Tt{u}!2!to !1!1!S !Tt{u}!2!lor !1!F !Tt{u}!2!2!2}
+!Pr{
+!Ass{!0!1!T !Tt{u}!2}
+!Eass{!0!1!1!T !Tt{u}!2!to !1!1!S !Tt{u}!2!lor !1!F !Tt{u}!2!2!2}}
+!Epr
+
+!lemma{v:succes}{!0!1!S !Tt{v}!2}
+!Pr{
+$!0!1!S !Tt{p}!2$! by~sld.
+$!0!1!S !Tt{q}!2$! by~completion.
+$!0!1!S !Tt{s}!2$! by~sld.
+$!0!1!S !Tt{v}!2$! by~sld.}
+!Epr
+
+!lemma{x:echec}{!0!1!F !Tt{x}!2}
+!Pr{
+$!0!1!F !Tt{x}!2$! by~completion.}
+!Epr
+
+!lemma{w:term}{!0!1!T !Tt{w}!2}
+!Pr{
+$!0!1!T !Tt{x}!2$! by~completion.
+$!0!1!F !Tt{x}!2$! by~completion.
+$!0!1!T !1(!Tt{x}!land !Tt{u})!2!2$.}
+!Epr
+
+!lemma{u:succes}{!0!1!S !Tt{u}!2}
+!Pr{
+$!0!1!S !Tt{u}!2$! by~sld.}
+!Epr
+
+!lemma{a:0}{!0!1!S !Tt{a}(!Tt{zero})!2}
+!Pr{
+$!0!1!S !Tt{a}(!Tt{zero})!2$! by~completion.}
+!Epr
+
+!lemma{a:1}{!0!1!ex[x]!,!1!S !Tt{a}(x)!2!2}
+!Pr{
+$!0!1!S !Tt{a}(!Tt{zero})!2$! by~completion.
+$!0!1!ex[x]!,!1!S !Tt{a}(x)!2!2$.}
+!Epr
+
+!lemma{a:2}{!0!1!F !Tt{a}(!Tt{one})!2}
+!Pr{
+$!0!1!F !Tt{a}(!Tt{one})!2$! by~completion.}
+!Epr
+
+!lemma{a:3}{!0!1!F !Tt{a}(!Tt{s}(!Tt{one}))!2}
+!Pr{
+$!0!1!F !Tt{a}(!Tt{s}(!Tt{one}))!2$! by~{!bf GAP}.}
+!Epr
+
+!end

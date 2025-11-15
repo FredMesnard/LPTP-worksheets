@@ -1,0 +1,232 @@
+\input /Users/fred/Desktop/lptp/tex/proofmacros.tex
+!title{ws4_soln}
+
+!lemma{man:odilon}{!0!1!S !Tt{man}(!Tt{odilon})!2}
+!Pr{
+$!0!1!S !Tt{man}(!Tt{odilon})!2$! by~completion.}
+!Epr
+
+!lemma{woman:genevieve}{!0!1!S !Tt{woman}(!Tt{genevieve})!2}
+!Pr{
+$!0!1!S !Tt{woman}(!Tt{genevieve})!2$! by~completion.}
+!Epr
+
+!lemma{man:exists}{!0!1!ex[x]!,!1!S !Tt{man}(x)!2!2}
+!Pr{
+$!0!1!S !Tt{man}(!Tt{odilon})!2$!by{Lemma}{man:odilon}.}
+!Epr
+
+!lemma{woman:existsnot}{!0!1!ex[x]!,!1!F !Tt{woman}(x)!2!2}
+!Pr{
+$!0!1!F !Tt{woman}(!Tt{toto})!2$! by~completion.}
+!Epr
+
+!lemma{man:term}{!0!1!all[x]!,!1!T !Tt{man}(x)!2!2}
+!Pr{
+$!0!1!T !Tt{man}(x)!2$! by~completion.}
+!Epr
+
+!lemma{woman:term}{!0!1!all[x]!,!1!T !Tt{woman}(x)!2!2}
+!Pr{
+$!0!1!T !Tt{woman}(x)!2$! by~completion.}
+!Epr
+
+!lemma{man:ground}{!0!1!all[x]!,!1(!1!S !Tt{man}(x)!2!to gr(x))!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{man}(x)!2}
+$!0!1!D !1!S !Tt{man}(x)!2!2$! by~completion.
+!Cas{!0x !eq !Tt{odilon}}
+$!0gr(!Tt{odilon})$.
+!Ecas
+!Cas{!0x !eq !Tt{remy}}
+$!0gr(!Tt{remy})$.
+!Ecas
+!Cas{!0x !eq !Tt{edouard}}
+$!0gr(!Tt{edouard})$.
+!Ecas
+!Fin{!0gr(x)}
+!Eass{!0!1!1!S !Tt{man}(x)!2!to gr(x)!2}}
+!Epr
+
+!lemma{woman:ground}{!0!1!all[x]!,!1(!1!S !Tt{woman}(x)!2!to gr(x))!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{woman}(x)!2}
+$!0!1!D !1!S !Tt{woman}(x)!2!2$! by~completion.
+!Cas{!0x !eq !Tt{genevieve}}
+$!0gr(!Tt{genevieve})$.
+!Ecas
+!Cas{!0x !eq !Tt{pauline}}
+$!0gr(!Tt{pauline})$.
+!Ecas
+!Cas{!0x !eq !Tt{melaine}}
+$!0gr(!Tt{melaine})$.
+!Ecas
+!Fin{!0gr(x)}
+!Eass{!0!1!1!S !Tt{woman}(x)!2!to gr(x)!2}}
+!Epr
+
+!lemma{man:notwoman}{!0!1!all[x]!,!1(!1!S !Tt{man}(x)!2!to !1!F !Tt{woman}(x)!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{man}(x)!2}
+!Con{!0x !eq !Tt{genevieve}}
+$!0!1!D !1!S !Tt{man}(x)!2!2$! by~completion.
+!Cas{!0x !eq !Tt{odilon}}
+!Ecas
+!Cas{!0x !eq !Tt{remy}}
+!Ecas
+!Cas{!0x !eq !Tt{edouard}}
+!Ecas
+!Fin{!0!bot}
+!Econ{!0!1!lnot x !eq !Tt{genevieve}!2}
+!Con{!0x !eq !Tt{pauline}}
+$!0!1!D !1!S !Tt{man}(x)!2!2$! by~completion.
+!Cas{!0x !eq !Tt{odilon}}
+!Ecas
+!Cas{!0x !eq !Tt{remy}}
+!Ecas
+!Cas{!0x !eq !Tt{edouard}}
+!Ecas
+!Fin{!0!bot}
+!Econ{!0!1!lnot x !eq !Tt{pauline}!2}
+!Con{!0x !eq !Tt{melaine}}
+$!0!1!D !1!S !Tt{man}(x)!2!2$! by~completion.
+!Cas{!0x !eq !Tt{odilon}}
+!Ecas
+!Cas{!0x !eq !Tt{remy}}
+!Ecas
+!Cas{!0x !eq !Tt{edouard}}
+!Ecas
+!Fin{!0!bot}
+!Econ{!0!1!lnot x !eq !Tt{melaine}!2}
+$!0!1!F !Tt{woman}(x)!2$! by~completion.
+!Eass{!0!1!1!S !Tt{man}(x)!2!to !1!F !Tt{woman}(x)!2!2}}
+!Epr
+
+!lemma{child:groundground}{!0!1!all[x,y]!,!1(!1!S !Tt{child}(x,y)!2!to !1gr(x)!land gr(y)!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{child}(x,y)!2}
+$!0!1!D !1!S !Tt{child}(x,y)!2!2$! by~completion.
+!Cas{!0!1x !eq !Tt{melaine}!land y !eq !Tt{odilon}!2}
+$!0gr(!Tt{melaine})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{melaine}!land y !eq !Tt{genevieve}!2}
+$!0gr(!Tt{melaine})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{pauline}!land y !eq !Tt{odilon}!2}
+$!0gr(!Tt{pauline})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{pauline}!land y !eq !Tt{genevieve}!2}
+$!0gr(!Tt{pauline})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{edouard}!land y !eq !Tt{odilon}!2}
+$!0gr(!Tt{edouard})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{edouard}!land y !eq !Tt{genevieve}!2}
+$!0gr(!Tt{edouard})$.
+!Ecas
+!Fin{!0gr(x)}
+$!0!1!D !1!S !Tt{child}(x,y)!2!2$! by~completion.
+!Cas{!0!1x !eq !Tt{melaine}!land y !eq !Tt{odilon}!2}
+$!0gr(!Tt{odilon})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{melaine}!land y !eq !Tt{genevieve}!2}
+$!0gr(!Tt{genevieve})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{pauline}!land y !eq !Tt{odilon}!2}
+$!0gr(!Tt{odilon})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{pauline}!land y !eq !Tt{genevieve}!2}
+$!0gr(!Tt{genevieve})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{edouard}!land y !eq !Tt{odilon}!2}
+$!0gr(!Tt{odilon})$.
+!Ecas
+!Cas{!0!1x !eq !Tt{edouard}!land y !eq !Tt{genevieve}!2}
+$!0gr(!Tt{genevieve})$.
+!Ecas
+!Fin{!0gr(y)}
+!Eass{!0!1!1!S !Tt{child}(x,y)!2!to !1gr(x)!land gr(y)!2!2}}
+!Epr
+
+!lemma{father:groundground}{!0!1!all[x,y]!,!1(!1!S !Tt{father}(x,y)!2!to !1gr(x)!land gr(y)!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{father}(x,y)!2}
+$!0!1!D !1!S !Tt{father}(x,y)!2!2$! by~completion.
+$!0gr(x)$!by{Lemma}{man:ground}.
+$!0!1!D !1!S !Tt{father}(x,y)!2!2$! by~completion.
+$!0gr(y)$!by{Lemma}{child:groundground}.
+!Eass{!0!1!1!S !Tt{father}(x,y)!2!to !1gr(x)!land gr(y)!2!2}}
+!Epr
+
+!lemma{father:man}{!0!1!all[x,y]!,!1(!1!S !Tt{father}(x,y)!2!to !1!S !Tt{man}(x)!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{father}(x,y)!2}
+$!0!1!D !1!S !Tt{father}(x,y)!2!2$! by~completion.
+!Eass{!0!1!1!S !Tt{father}(x,y)!2!to !1!S !Tt{man}(x)!2!2}}
+!Epr
+
+!lemma{father:child}{!0!1!all[x,y]!,!1(!1!S !Tt{father}(x,y)!2!to !1!S !Tt{child}(y,x)!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{father}(x,y)!2}
+$!0!1!D !1!S !Tt{father}(x,y)!2!2$! by~completion.
+$!0!1!S !Tt{child}(y,x)!2$.
+!Eass{!0!1!1!S !Tt{father}(x,y)!2!to !1!S !Tt{child}(y,x)!2!2}}
+!Epr
+
+!lemma{brother:brother_or_sister}{!0!1!all[x,y]!,!1(!1!S !Tt{brother}(x,y)!2!to !1!S !Tt{brother_or_sister}(x,y)!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{brother}(x,y)!2}
+$!0!1!D !1!S !Tt{brother}(x,y)!2!2$! by~completion.
+!Eass{!0!1!1!S !Tt{brother}(x,y)!2!to !1!S !Tt{brother_or_sister}(x,y)!2!2}}
+!Epr
+
+!lemma{sister:brother_or_sister}{!0!1!all[x,y]!,!1(!1!S !Tt{sister}(x,y)!2!to !1!S !Tt{brother_or_sister}(x,y)!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{sister}(x,y)!2}
+$!0!1!D !1!S !Tt{sister}(x,y)!2!2$! by~completion.
+!Eass{!0!1!1!S !Tt{sister}(x,y)!2!to !1!S !Tt{brother_or_sister}(x,y)!2!2}}
+!Epr
+
+!lemma{brother_or_sister:brother_or_sister}{!0!1!all[x,y]!,!1(!1!1!S !Tt{brother}(x,y)!2!lor !1!S !Tt{sister}(x,y)!2!2!to !1!S !Tt{brother_or_sister}(x,y)!2)!2!2}
+!Pr{
+!Ass{!0!1!1!S !Tt{brother}(x,y)!2!lor !1!S !Tt{sister}(x,y)!2!2}
+!Cas{!0!1!S !Tt{brother}(x,y)!2}
+$!0!1!D !1!S !Tt{brother}(x,y)!2!2$! by~completion.
+$!0!1!D !1!S !Tt{brother_or_sister}(x,y)!2!2$! by~completion.
+!Ecas
+!Cas{!0!1!S !Tt{sister}(x,y)!2}
+$!0!1!D !1!S !Tt{sister}(x,y)!2!2$! by~completion.
+$!0!1!D !1!S !Tt{brother_or_sister}(x,y)!2!2$! by~completion.
+!Ecas
+!Fin{!0!1!ex[z]!,!1(!1!S !Tt{child}(x,z)!2!land !1!S !Tt{child}(y,z)!2!land !1!S !Tt{\==}(x,y)!2)!2!2}
+$!0!1!S !Tt{brother_or_sister}(x,y)!2$! by~completion.
+!Eass{!0!1!1!1!S !Tt{brother}(x,y)!2!lor !1!S !Tt{sister}(x,y)!2!2!to !1!S !Tt{brother_or_sister}(x,y)!2!2}}
+!Epr
+
+!lemma{child:man_ou_woman}{!0!1!all[x,y]!,!1(!1!S !Tt{child}(x,y)!2!to !1!1!S !Tt{man}(x)!2!lor !1!S !Tt{woman}(x)!2!2)!2!2}
+!Pr{
+!Ass{!0!1!S !Tt{child}(x,y)!2}
+$!0!1!D !1!S !Tt{child}(x,y)!2!2$! by~completion.
+!Cas{!0!1x !eq !Tt{melaine}!land y !eq !Tt{odilon}!2}
+$!0!1!S !Tt{woman}(x)!2$! by~completion.
+!Ecas
+!Cas{!0!1x !eq !Tt{melaine}!land y !eq !Tt{genevieve}!2}
+$!0!1!S !Tt{woman}(x)!2$! by~completion.
+!Ecas
+!Cas{!0!1x !eq !Tt{pauline}!land y !eq !Tt{odilon}!2}
+$!0!1!S !Tt{woman}(x)!2$! by~completion.
+!Ecas
+!Cas{!0!1x !eq !Tt{pauline}!land y !eq !Tt{genevieve}!2}
+$!0!1!S !Tt{woman}(x)!2$! by~completion.
+!Ecas
+!Cas{!0!1x !eq !Tt{edouard}!land y !eq !Tt{odilon}!2}
+$!0!1!S !Tt{man}(x)!2$! by~completion.
+!Ecas
+!Cas{!0!1x !eq !Tt{edouard}!land y !eq !Tt{genevieve}!2}
+$!0!1!S !Tt{man}(x)!2$! by~completion.
+!Ecas
+!Fin{!0!1!1!S !Tt{man}(x)!2!lor !1!S !Tt{woman}(x)!2!2}
+!Eass{!0!1!1!S !Tt{child}(x,y)!2!to !1!1!S !Tt{man}(x)!2!lor !1!S !Tt{woman}(x)!2!2!2}}
+!Epr
+
+!end

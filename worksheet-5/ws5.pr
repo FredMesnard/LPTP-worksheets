@@ -1,0 +1,54 @@
+:- initialize.
+
+%:- set(standard_depth_thinking).
+:- tex_file(ws5).
+:- compile_gr(ws5).
+:- needs_gr(ws5).
+
+/* nat(0).  nat(s(X)) :- nat(X).
+
+add(0,Y,Y).
+add(s(X),Y,s(Z)) :- add(X,Y,Z).
+*/
+
+:- lemma(nat:ground,
+all x: succeeds nat(?x) => gr(?x),
+ff by gap).
+
+:- lemma(add:ground:1,
+all [x,y,z]: succeeds add(?x,?y,?z) => gr(?x),
+ff by gap).
+
+:- lemma(add:ground:2,
+all [x,y,z]: succeeds add(?x,?y,?z) & gr(?y) => gr(?z),
+ff by gap).
+
+:- lemma(add:ground:3,
+all [x,y,z]: succeeds add(?x,?y,?z) & gr(?z) => gr(?y),
+ff by gap).
+
+:- lemma(add:types:2,
+all [x,y,z]: succeeds add(?x,?y,?z) & succeeds nat(?y) => succeeds nat(?z),
+ff by gap).
+
+:- lemma(add:types:3,
+all [x,y,z]: succeeds add(?x,?y,?z) & succeeds nat(?z) => succeeds nat(?y),
+ff by gap).
+
+:- lemma(nat:termination,
+all x: succeeds nat(?x) => terminates nat(?x),
+ff by gap).
+
+:- lemma(add:termination:1,
+all [x,y,z]: succeeds nat(?x) => terminates add(?x,?y,?z),
+ff by gap).
+
+:- lemma(add:termination:2,
+all [x,y,z]: succeeds nat(?z) => terminates add(?x,?y,?z),
+ff by gap).
+
+:- lemma(add:termination:3,
+all [x,y,z]: succeeds add(?x,?y,?z) => terminates add(?x,?y,?z),
+ff by gap).
+
+:- bye.

@@ -1,0 +1,138 @@
+:- initialize.
+:- tex_file(ws2).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% =i, HR-p110, axiome LPTP-p71
+:- lemma(ax0, a = a, []),nl. 
+:- lemma(ax1, gr(a), []),nl. 
+:- lemma(ax2, f(a) <> f(b),[]),nl.
+:- lemma(ax3, p \/ ~p,[]),nl.
+:- lemma(ax4, ~(a=b),[]),nl.
+:- lemma(ax5, p <=> p,[]),nl.
+
+:-lemma(p110:elim:egal,
+(all [x]: ?x=a & p(?x) ) => p(a),
+[]).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p111:egal:reflex,
+all [x]: ?x = ?x,
+[]).
+
+:- lemma(p111:egal:sym,
+all [x1,x2]: ?x1 = ?x2 => ?x2 = ?x1,
+[]).
+
+:- lemma(p111:egal:trans,
+all [x1,x2,x3]: ?x1 = ?x2 & ?x2 = ?x3 => ?x1 = ?x3,
+[]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- lemma(p112:elim:qqsoit0,
+(all x: p(?x)) => p(a),
+(all x: p(?x)) => p(a) by gap).
+
+
+:- lemma(p112:elim:qqsoit1,
+(all x: p(?x)) => (all [y]: p(?y)),
+(all x: p(?x)) => (all [y]: p(?y)) by gap).
+
+:- lemma(p112:elim:qqsoit2,
+(all x: p(?x)) => (all [y]: p(f(?y))),
+(all x: p(?x)) => (all [y]: p(f(?y))) by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p113:intro:qqsoit0,
+(all x: p(?x)) => (all y: p(?y)),
+assume(all x: p(?x),[p(?y)],all y: p(?y))),nl.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p114:0,
+(all x: (p(?x) => q(?x))) & (all x: p(?x)) => (all x: q(?x)),
+assume((all x: (p(?x) => q(?x))) & (all x: p(?x)),
+ [p(?x0) => q(?x0),
+  p(?x0),
+  q(?x0)],
+ all x: q(?x))),nl.
+
+
+:- lemma(p114:1,
+p(a) & (all x: (p(?x) => ~ q(?x))) => ~ q(a),
+p(a) & (all x: (p(?x) => ~ q(?x))) => ~ q(a) by gap).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p117:0,
+(all x: p(?x))=> (ex x: p(?x)),
+assume(all x: p(?x),
+ [p(?x)],
+ ex x: p(?x))),nl.
+
+
+:- lemma(p117:1,
+(all x: (p(?x) => q(?x))) & (ex x: p(?x)) => (ex x: q(?x)),
+(all x: (p(?x) => q(?x))) & (ex x: p(?x)) => (ex x: q(?x)) by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%:- lemma(p118:0,
+%(all x: (p(?x) => q(?x))) & (ex x: p(?x)) => (ex x: q(?x)),
+%assume((all x: (p(?x) => q(?x))) & (ex x: p(?x)),
+% exist(x0,p(?x0),
+%  [p(?x0)=>q(?x0),q(?x0)],q(?x0)),
+% ex x: q(?x))),nl.
+
+
+:- lemma(p118:1,
+(all x: q(?x) => r(?x)) & (ex x: p(?x) & q(?x)) => (ex x: p(?x) & r(?x)),
+(all x: q(?x) => r(?x)) & (ex x: p(?x) & q(?x)) => (ex x: p(?x) & r(?x))
+by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p119:0,
+(ex x: p(?x))&(all [x,y]: p(?x) => q(?y)) => (all y: q(?y)),
+(ex x: p(?x))&(all [x,y]: p(?x) => q(?y)) => (all y: q(?y)) by gap).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p122:1,
+~ (all x: p(?x)) => (ex x: ~ p(?x)),
+~ (all x: p(?x)) => (ex x: ~ p(?x)) by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p123:1,
+(ex x: ~p(?x)) => ~(all x: p(?x)),
+(ex x: ~p(?x)) => ~(all x: p(?x)) by gap).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p124:0,
+(all x: p(?x)) & q => (all x: p(?x) & q),
+(all x: p(?x)) & q => (all x: p(?x) & q) by gap).
+
+
+:- lemma(p124:1,
+(ex x: p(?x)) \/ (ex x: q(?x)) => (ex x: p(?x) \/ q(?x)),
+(ex x: p(?x)) \/ (ex x: q(?x)) => (ex x: p(?x) \/ q(?x)) by gap).
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- lemma(p125:0,
+(ex x: p(?x) \/ q(?x)) => (ex x: p(?x)) \/ (ex x: q(?x)),
+(ex x: p(?x) \/ q(?x)) => (ex x: p(?x)) \/ (ex x: q(?x)) by gap).
+
+
+:- lemma(p125:1,
+(ex [x,y]: p(?x,?y)) => (ex [y,x]: p(?x,?y)),
+(ex [x,y]: p(?x,?y)) => (ex [y,x]: p(?x,?y)) by gap).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% p126-127, exo 2.5.1, 2.5.2, 2.5.3, 2.5.4, 
+% 2.5.5, 2.5.6, 2.5.7, 2.5.8, 2.5.9, 2.5.10
+
+:- bye.

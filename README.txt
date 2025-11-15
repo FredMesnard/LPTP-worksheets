@@ -1,4 +1,4 @@
-Here are a set of worksheets with solutions to
+Here is a set of worksheets with solutions to
 gradually learn LPTP, the Logic Program Theorem Prover.
 
 The LPTP proof format is an extension of first order natural deduction.
